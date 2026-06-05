@@ -1,0 +1,32 @@
+title: "[Announcement] "
+labels: ["release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for maintainer-owned announcements only.
+  - type: input
+    id: announcement_summary
+    attributes:
+      label: Summary
+      description: Short public summary for the announcement.
+      placeholder: ".ontos Protocol 1.0.0 is available"
+    validations:
+      required: true
+  - type: textarea
+    id: announcement_body
+    attributes:
+      label: Details
+      description: Include links to release notes, docs, examples, packages, or follow-up issues.
+      placeholder: "What changed, who should care, and what should readers do next?"
+    validations:
+      required: true
+  - type: checkboxes
+    id: announcement_checks
+    attributes:
+      label: Maintainer checks
+      options:
+        - label: This announcement uses only public `.ontos Protocol` context.
+          required: true
+        - label: Links point to public release, docs, package, or issue surfaces.
+          required: true

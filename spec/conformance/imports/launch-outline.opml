@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Launch Outline</title>
+  </head>
+  <body>
+    <outline text="Release" _id="release" status="active">
+      <outline text="Parser" owner="core"/>
+      <outline text="CLI" owner="tools"/>
+    </outline>
+  </body>
+</opml>

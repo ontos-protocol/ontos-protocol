@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Project state example",
+    "type": "project-state",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "current-release",
+      "title": "Current release",
+      "tags": ["release"],
+      "fields": {
+        "status": "active",
+        "purpose": "Track the formal open-source release.",
+        "current": [
+          "Format specification is being prepared.",
+          "Parser and CLI work are planned."
+        ],
+        "risk": [
+          "Do not publish before conformance fixtures are complete."
+        ],
+        "verify": [
+          "Run ontosfmt validate examples.",
+          "Run exporter snapshot tests."
+        ]
+      },
+      "children": [
+        {
+          "id": "parser-package",
+          "title": "Parser package",
+          "tags": ["package"],
+          "fields": {
+            "status": "planned",
+            "purpose": "Parse .ontos files into the canonical AST.",
+            "acceptance": [
+              "Valid fixtures parse successfully.",
+              "Invalid fixtures produce expected diagnostics."
+            ]
+          },
+          "children": []
+        },
+        {
+          "id": "cli-package",
+          "title": "CLI package",
+          "tags": ["package"],
+          "fields": {
+            "status": "planned",
+            "purpose": "Provide validation, formatting, export, import, and pack commands.",
+            "verify": [
+              "ontosfmt --help prints command list.",
+              "ontosfmt validate exits with documented codes."
+            ]
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
+

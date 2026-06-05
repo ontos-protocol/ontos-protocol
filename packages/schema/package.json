@@ -1,0 +1,27 @@
+{
+  "name": "@ontos-protocol/schema",
+  "version": "1.0.0",
+  "description": ".ontos Protocol AST schema and shared constants.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "packages/schema"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/packages/schema#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js",
+    "./ontos-ast.schema.json": "./src/ontos-ast.schema.json"
+  },
+  "files": [
+    "src"
+  ]
+}

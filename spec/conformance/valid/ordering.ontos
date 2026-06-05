@@ -1,0 +1,18 @@
+@ontos 1.0
+@title Ordering fixture
+@type conformance
+@updated 2026-06-05
+@lang en
+
+- Ordered root @id(ordered-root) #beta #alpha
+  zeta: Keep this field first.
+  alpha: Keep this field second.
+  middle:
+    - second list item stays first
+    - first list item stays second
+
+  - Second child @id(second-child)
+    purpose: This child intentionally appears first.
+
+  - First child @id(first-child)
+    purpose: This child intentionally appears second.

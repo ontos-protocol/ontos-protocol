@@ -1,0 +1,34 @@
+@ontos 1.0
+@title Project state example
+@type project-state
+@updated 2026-06-05
+
+- Formal release @id(formal-release) #release #status
+  status: active
+  owner: maintainers
+  purpose: Track readiness for the first public open-source release.
+  current:
+    - Parser, schema, CLI, conformance fixtures, and package checks are active.
+    - Viewer and editor integrations remain on the release path.
+  ai_task: Summarize blockers and propose next verification steps.
+  ai_boundary: Keep unreleased project names out of public-facing text.
+  risk:
+    - Shipping before examples and viewer are complete may weaken adoption.
+  verify:
+    - Run npm run release:check.
+    - Confirm every official example validates and exports.
+  history:
+    - 2026-06-05 aligned public naming and package scope.
+
+  - Toolchain @id(toolchain) #cli #packages
+    status: active
+    depends_on: [[formal-release]]
+    acceptance:
+      - Packages install from tarballs.
+      - CLI validates and exports examples.
+
+    - Release gate @id(release-gate) #ci
+      purpose: Keep release checks deterministic.
+      verify:
+        - Public surface scan passes.
+        - Publish dry run passes.

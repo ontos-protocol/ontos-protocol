@@ -1,0 +1,29 @@
+title: "[Show and tell] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share real workflows, examples, integrations, or writeups that use `.ontos Protocol`.
+  - type: input
+    id: project_or_workflow
+    attributes:
+      label: Project or workflow
+      description: What did you build or try?
+      placeholder: "Repository map, AI handoff pack, review workflow..."
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What worked, what was confusing, and what should others learn from it?
+      placeholder: "Share links, snippets, screenshots, or notes."
+    validations:
+      required: true
+  - type: checkboxes
+    id: sharing
+    attributes:
+      label: Sharing checks
+      options:
+        - label: I am only sharing content that can be public.
+          required: true

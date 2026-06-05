@@ -1,0 +1,33 @@
+@ontos 1.0
+@title Team knowledge example
+@type team-knowledge
+@updated 2026-06-05
+
+- Maintainer knowledge @id(maintainer-knowledge) #team #knowledge
+  status: active
+  owner: maintainers
+  purpose: Keep recurring project decisions easy to find.
+  current:
+    - Naming decisions are documented in docs/NAMING.md.
+    - Release decisions are documented in docs/RELEASE_PROCESS.md.
+  ai_task: Answer contributor questions using only public repository context.
+  ai_boundary: Avoid inventing commitments not recorded in docs.
+  risk:
+    - Knowledge may become stale if decisions are not linked.
+  verify:
+    - Check references after moving documentation.
+    - Run public surface scan after editing public text.
+  history:
+    - 2026-06-05 created official team knowledge example.
+
+  - Naming decisions @id(naming-decisions) #naming
+    status: stable
+    depends_on: [[maintainer-knowledge]]
+    acceptance:
+      - Repository name remains ontos-protocol.
+      - CLI command remains ontosfmt.
+
+    - Contributor answer @id(contributor-answer) #support
+      purpose: Explain naming without mentioning unrelated projects.
+      verify:
+        - Answer links to docs/NAMING.md.

@@ -1,0 +1,12 @@
+@ontos 1.0
+@title Launch Plan
+@type imported-markdown
+
+- Launch Plan @id(launch-plan)
+  body: Intro paragraph.
+
+  - Scope @id(scope)
+    body: Ship parser and CLI.
+
+  - Risks @id(risks)
+    body: Do not publish early.

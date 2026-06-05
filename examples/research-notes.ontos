@@ -1,0 +1,33 @@
+@ontos 1.0
+@title Research notes example
+@type research-notes
+@updated 2026-06-05
+
+- Adoption research @id(adoption-research) #research #adoption
+  status: active
+  owner: research
+  purpose: Understand how developers evaluate structured project context.
+  current:
+    - Users need fast validation and clear examples.
+    - Tool builders need stable AST and diagnostics.
+  ai_task: Cluster findings into product and documentation improvements.
+  ai_boundary: Keep claims evidence-based and avoid unsupported market claims.
+  risk:
+    - Anecdotal feedback may overstate demand.
+  verify:
+    - Separate observations from recommendations.
+    - Link each recommendation to evidence.
+  history:
+    - 2026-06-05 created official research notes example.
+
+  - Interview finding @id(interview-finding) #evidence
+    status: draft
+    depends_on: [[adoption-research]]
+    acceptance:
+      - Finding includes source date.
+      - Finding states confidence level.
+
+    - Recommendation @id(research-recommendation) #decision
+      purpose: Improve quickstart examples before broad promotion.
+      verify:
+        - Recommendation references [[interview-finding]].

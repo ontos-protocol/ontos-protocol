@@ -1,0 +1,12 @@
+{
+  "source": "markdown",
+  "headings": 3,
+  "paragraphs": 3,
+  "bulletLists": 1,
+  "orderedLists": 1,
+  "codeBlocks": 1,
+  "tables": 1,
+  "blockquotes": 1,
+  "frontMatterFields": 3,
+  "warnings": []
+}

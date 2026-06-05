@@ -1,0 +1,5 @@
+@ontos 1.0
+@Title Invalid header
+
+- Root @id(root)
+  purpose: Exercise invalid header syntax.

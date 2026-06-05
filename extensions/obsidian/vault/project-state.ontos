@@ -1,0 +1,13 @@
+@ontos 1.0
+@title Obsidian example vault
+@type team-knowledge
+
+- Knowledge base @id(knowledge-base) #vault
+  status: active
+  purpose: Test local reading and preview behavior in Obsidian.
+  verify:
+    - Open the file in the example vault.
+    - Run the preview command.
+
+  - Reference node @id(reference-node) #link
+    purpose: Confirm [[knowledge-base]] references are visible.

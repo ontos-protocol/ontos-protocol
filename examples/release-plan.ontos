@@ -1,0 +1,33 @@
+@ontos 1.0
+@title Release plan example
+@type release-plan
+@updated 2026-06-05
+
+- Public release @id(public-release) #release #planning
+  status: active
+  owner: maintainers
+  purpose: Coordinate the first stable open-source release.
+  current:
+    - Release checks run locally and in CI.
+    - Package dry runs pass before publishing.
+  ai_task: Identify unchecked launch blockers in priority order.
+  ai_boundary: Do not publish credentials, private names, or unreleased claims.
+  risk:
+    - A rushed release may create compatibility promises too early.
+  verify:
+    - Run npm run release:check.
+    - Confirm repository metadata before tagging.
+  history:
+    - 2026-06-05 created official release plan example.
+
+  - Release candidate @id(release-candidate) #gate
+    status: planned
+    depends_on: [[public-release]]
+    acceptance:
+      - All official examples validate.
+      - README quickstart works in a clean directory.
+
+    - Tag checklist @id(tag-checklist) #checklist
+      purpose: Prepare changelog, package versions, and release notes.
+      verify:
+        - Dry run output lists only public runtime files.

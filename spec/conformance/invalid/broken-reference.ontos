@@ -1,0 +1,7 @@
+@ontos 1.0
+@title Broken reference example
+
+- Root @id(root)
+  purpose: This references a missing node.
+  see: [[missing-node]]
+

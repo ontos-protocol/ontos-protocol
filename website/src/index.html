@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI-native structured text protocol for living project context.">
+  <link rel="canonical" href="https://ontos-protocol.github.io/ontos-protocol/">
+  <meta property="og:title" content=".ontos Protocol">
+  <meta property="og:description" content="Markdown for articles. .ontos for AI-native project context.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ontos-protocol.github.io/ontos-protocol/">
+  <meta property="og:image" content="./assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="./assets/social-preview.svg">
+  <title>.ontos Protocol</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">.ontos Protocol</a>
+    <nav aria-label="Primary">
+      <a href="#quickstart">Quickstart</a>
+      <a href="#demo">Demo</a>
+      <a href="#examples">Examples</a>
+      <a href="#ai-pack">AI Pack</a>
+      <a href="#docs">Docs</a>
+    </nav>
+    <label class="version-control" for="docs-version">
+      <span>Docs</span>
+      <select id="docs-version" aria-label="Documentation version">
+        <option value="1.0.0" selected>1.0.0</option>
+      </select>
+    </label>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Plain text protocol for AI-era project memory</p>
+        <h1 id="hero-title">.ontos Protocol</h1>
+        <p class="lede">Markdown for articles. .ontos for AI-native project context.</p>
+        <div class="hero-actions">
+          <a href="#demo">Try the viewer</a>
+          <a href="#quickstart">Install ontosfmt</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="./assets/viewer-screenshot.svg" alt=".ontos Protocol viewer showing a structured release document">
+        <figcaption>Structured project context stays readable, searchable, and local.</figcaption>
+      </figure>
+    </section>
+
+    <section id="quickstart" class="band" aria-labelledby="quickstart-title">
+      <h2 id="quickstart-title">Quickstart</h2>
+      <div class="grid">
+        <article>
+          <h3>Install</h3>
+          <pre><code>npm install -g @ontos-protocol/cli</code></pre>
+        </article>
+        <article>
+          <h3>Validate</h3>
+          <pre><code>ontosfmt validate examples/project-state.ontos</code></pre>
+        </article>
+        <article>
+          <h3>Export</h3>
+          <pre><code>ontosfmt export examples/project-state.ontos --to html</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="demo" class="band" aria-labelledby="demo-title">
+      <div class="section-title">
+        <h2 id="demo-title">Viewer Demo</h2>
+        <p>Loads a bundled sample by default. Opening a local file stays in your browser.</p>
+      </div>
+      <div id="viewer-demo" class="demo-shell" aria-live="polite"></div>
+    </section>
+
+    <section id="examples" class="band" aria-labelledby="examples-title">
+      <div class="section-title">
+        <h2 id="examples-title">Examples Gallery</h2>
+        <p>Official examples cover specs, release plans, handoffs, reviews, and team knowledge.</p>
+      </div>
+      <label class="search-label" for="examples-search">Search examples</label>
+      <input id="examples-search" class="search-input" type="search" placeholder="Search examples by workflow or filename" autocomplete="off">
+      <div id="examples-list" class="examples-list"></div>
+      <p id="examples-empty" class="empty-state" hidden>No matching examples.</p>
+    </section>
+
+    <section id="ai-pack" class="band" aria-labelledby="pack-title">
+      <div class="section-title">
+        <h2 id="pack-title">AI Context Pack</h2>
+        <p>A focused pack gives AI tools the selected node, fields, path, and boundaries.</p>
+      </div>
+      <pre id="pack-demo"><code></code></pre>
+    </section>
+
+    <section id="launch-assets" class="band" aria-labelledby="assets-title">
+      <div class="section-title">
+        <h2 id="assets-title">Launch Assets</h2>
+        <p>Reusable visuals for release notes, posts, and package documentation.</p>
+      </div>
+      <div class="asset-grid">
+        <a href="./assets/viewer-screenshot.svg">
+          <img src="./assets/viewer-screenshot.svg" alt=".ontos viewer asset">
+          <span>Viewer</span>
+        </a>
+        <a href="./assets/cli-screenshot.svg">
+          <img src="./assets/cli-screenshot.svg" alt="ontosfmt CLI asset">
+          <span>CLI</span>
+        </a>
+        <a href="./assets/social-preview.svg">
+          <img src="./assets/social-preview.svg" alt=".ontos social preview asset">
+          <span>Social Preview</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="docs" class="band" aria-labelledby="docs-title">
+      <div class="section-title">
+        <h2 id="docs-title">Docs</h2>
+        <p>Specification, guides, governance, and release references for implementers.</p>
+      </div>
+      <div class="docs-grid">
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/WHY_ONTOS.md">Why .ontos</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/FORMAT_GUIDE.md">Format Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/spec/ontos-format-1.0.md">Specification</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/spec/ontos-ast-schema-1.0.json">AST Schema</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/packages/cli/README.md">CLI Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/packages/parser/README.md">Parser API</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/packages/viewer/README.md">Viewer Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/USER_WORKFLOWS.md">AI Workflow Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/AI_AGENT_WORKFLOWS.md">Agent Workflows</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/MARKDOWN_MIGRATION.md">Markdown Migration</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/TEMPLATES.md">Templates</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/extensions/vscode/README.md">VS Code Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/extensions/obsidian/README.md">Obsidian Guide</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/FAQ.md">FAQ</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/GOVERNANCE.md">Governance</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/COMPATIBILITY_POLICY.md">Compatibility Policy</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/PERFORMANCE_LIMITS.md">Performance Limits</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/RUNTIME_TARGETS.md">Runtime Targets</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/SECURITY.md">Security</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/RELEASE_NOTES_1.0.0.md">Release Notes</a>
+        <a href="https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/ANALYTICS_DECISION.md">Analytics Decision</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>.ontos Protocol is local-first, plain text, and MIT licensed.</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

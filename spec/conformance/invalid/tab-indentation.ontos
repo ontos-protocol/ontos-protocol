@@ -1,0 +1,6 @@
+@ontos 1.0
+@title Tab indentation example
+
+- Root @id(root)
+	purpose: This field is indented with a tab.
+

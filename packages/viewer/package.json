@@ -1,0 +1,29 @@
+{
+  "name": "@ontos-protocol/viewer",
+  "version": "1.0.0",
+  "description": "Browser viewer primitives for .ontos Protocol documents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "packages/viewer"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/packages/viewer#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@ontos-protocol/parser": "1.0.0"
+  }
+}

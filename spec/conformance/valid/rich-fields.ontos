@@ -1,0 +1,17 @@
+@ontos 1.0
+@title Rich fields fixture
+@type conformance
+
+- Rich field node @id(rich-field-node) #conformance
+  purpose: Exercise multiline text and code fields.
+  source: ./docs/rich-fields.md
+  body: |
+    First paragraph keeps line breaks.
+    Second paragraph references [[rich-field-node.purpose]].
+  snippet: ```js
+    const message = ".ontos rich field";
+    console.log(message);
+    ```
+  verify:
+    - Parse text field as a rich text field.
+    - Parse code field as a rich code field.

@@ -1,0 +1,273 @@
+{
+  "name": "ontos-protocol-vscode",
+  "displayName": ".ontos Protocol",
+  "description": "VS Code language support for .ontos Protocol files.",
+  "version": "1.0.0",
+  "publisher": "ontos-protocol",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "extensions/vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/extensions/vscode#readme",
+  "type": "module",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ontos",
+    ".ontos",
+    "ai",
+    "structured text"
+  ],
+  "icon": "assets/icon.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:ontos",
+    "onCommand:ontos.validate",
+    "onCommand:ontos.format",
+    "onCommand:ontos.exportMarkdown",
+    "onCommand:ontos.exportHtml",
+    "onCommand:ontos.exportJson",
+    "onCommand:ontos.exportOpml",
+    "onCommand:ontos.copyNodeId",
+    "onCommand:ontos.copyNodePath",
+    "onCommand:ontos.copyNodeText",
+    "onCommand:ontos.contextPack",
+    "onCommand:ontos.reviewPack",
+    "onCommand:ontos.handoffPack",
+    "onCommand:ontos.modifyBoundaryPack",
+    "onCommand:ontos.verificationPack",
+    "onCommand:ontos.preview",
+    "onCommand:ontos.convertMarkdown",
+    "onCommand:ontos.openAsText",
+    "onCommand:ontos.openAsTree",
+    "onCommand:ontos.focusTree",
+    "onCommand:ontos.refreshTree",
+    "onView:ontosNodeTree",
+    "onCustomEditor:ontos.nativeViewer"
+  ],
+  "files": [
+    "dist",
+    "assets",
+    "syntaxes",
+    "language-configuration.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "ontos.nativeViewer",
+        "displayName": ".ontos Tree",
+        "priority": "default",
+        "selector": [
+          {
+            "filenamePattern": "*.ontos"
+          }
+        ]
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ontos",
+          "title": ".ontos",
+          "icon": "assets/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ontos": [
+        {
+          "id": "ontosNodeTree",
+          "name": "Node Tree",
+          "when": "ontos:active"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "ontos.refreshTree",
+          "when": "view == ontosNodeTree",
+          "group": "navigation"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "ontos",
+        "aliases": [
+          ".ontos",
+          "ontos"
+        ],
+        "extensions": [
+          ".ontos"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ontos",
+        "scopeName": "source.ontos",
+        "path": "./syntaxes/ontos.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ontos.validate",
+        "title": ".ontos: Validate Document"
+      },
+      {
+        "command": "ontos.format",
+        "title": ".ontos: Format Document"
+      },
+      {
+        "command": "ontos.exportMarkdown",
+        "title": ".ontos: Export Markdown"
+      },
+      {
+        "command": "ontos.exportHtml",
+        "title": ".ontos: Export HTML"
+      },
+      {
+        "command": "ontos.exportJson",
+        "title": ".ontos: Export JSON"
+      },
+      {
+        "command": "ontos.exportOpml",
+        "title": ".ontos: Export OPML"
+      },
+      {
+        "command": "ontos.copyNodeId",
+        "title": ".ontos: Copy Node ID"
+      },
+      {
+        "command": "ontos.copyNodePath",
+        "title": ".ontos: Copy Node Path"
+      },
+      {
+        "command": "ontos.copyNodeText",
+        "title": ".ontos: Copy Node Text"
+      },
+      {
+        "command": "ontos.contextPack",
+        "title": ".ontos: Copy Context Pack"
+      },
+      {
+        "command": "ontos.reviewPack",
+        "title": ".ontos: Copy Review Pack"
+      },
+      {
+        "command": "ontos.handoffPack",
+        "title": ".ontos: Copy Handoff Pack"
+      },
+      {
+        "command": "ontos.modifyBoundaryPack",
+        "title": ".ontos: Copy Modify-Boundary Pack"
+      },
+      {
+        "command": "ontos.verificationPack",
+        "title": ".ontos: Copy Verification Pack"
+      },
+      {
+        "command": "ontos.preview",
+        "title": ".ontos: Open Optional Side Preview"
+      },
+      {
+        "command": "ontos.convertMarkdown",
+        "title": ".ontos: Convert Markdown to .ontos"
+      },
+      {
+        "command": "ontos.openAsText",
+        "title": ".ontos: Open as Text"
+      },
+      {
+        "command": "ontos.openAsTree",
+        "title": ".ontos: Open as Tree"
+      },
+      {
+        "command": "ontos.focusTree",
+        "title": ".ontos: Focus Node Tree"
+      },
+      {
+        "command": "ontos.refreshTree",
+        "title": ".ontos: Refresh Node Tree",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ontos.revealNode",
+        "title": ".ontos: Reveal Node in Text"
+      }
+    ],
+    "configuration": {
+      "title": ".ontos Protocol",
+      "properties": {
+        "ontos.validateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate .ontos files when they are saved."
+        },
+        "ontos.defaultEditor": {
+          "type": "string",
+          "enum": [
+            "tree",
+            "text"
+          ],
+          "default": "tree",
+          "description": "Open .ontos files as a tree custom editor by default, or as plain text."
+        },
+        "ontos.autoPreview": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open the optional side tree preview when a .ontos document is active."
+        },
+        "ontos.focusSidebarOnOpen": {
+          "type": "boolean",
+          "default": false,
+          "description": "Focus the optional Node Tree side view when a .ontos document is active."
+        },
+        "ontos.indentGuides": {
+          "type": "boolean",
+          "default": true,
+          "description": "Draw subtle vertical indent guides in .ontos text mode."
+        },
+        "ontos.depthBands": {
+          "type": "boolean",
+          "default": false,
+          "description": "Tint nested .ontos text lines with subtle depth bands."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@ontos-protocol/parser": "1.0.0",
+    "@ontos-protocol/cli": "1.0.0",
+    "@ontos-protocol/viewer": "1.0.0"
+  },
+  "configurationDefaults": {
+    "workbench.editorAssociations": {
+      "*.ontos": "ontos.nativeViewer"
+    },
+    "[ontos]": {
+      "editor.guides.indentation": true,
+      "editor.guides.highlightActiveIndentation": true,
+      "editor.showFoldingControls": "mouseover",
+      "editor.foldingHighlight": true,
+      "editor.glyphMargin": false
+    }
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0"
+  }
+}

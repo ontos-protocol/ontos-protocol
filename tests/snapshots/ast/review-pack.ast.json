@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Review pack example",
+    "type": "review-pack",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "parser-review",
+      "title": "Parser review",
+      "tags": [
+        "review",
+        "parser"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "parser",
+        "purpose": "Package parser behavior for focused review.",
+        "current": [
+          "Valid fixtures parse into canonical AST.",
+          "Invalid fixtures produce documented diagnostics."
+        ],
+        "ai_task": "Review edge cases and propose missing conformance fixtures.",
+        "ai_boundary": "Do not rewrite the grammar without an RFC.",
+        "risk": [
+          "Parser behavior may drift from the written specification."
+        ],
+        "verify": [
+          "Run ontosfmt pack examples/review-pack.ontos --node parser-review --for review.",
+          "Compare diagnostics with spec/diagnostics-1.0.md."
+        ],
+        "history": [
+          "2026-06-05 created official review pack example."
+        ]
+      },
+      "children": [
+        {
+          "id": "diagnostic-coverage",
+          "title": "Diagnostic coverage",
+          "tags": [
+            "diagnostics"
+          ],
+          "fields": {
+            "status": "planned",
+            "depends_on": "[[parser-review]]",
+            "acceptance": [
+              "Duplicate IDs produce a stable error code.",
+              "Broken references produce a stable error code."
+            ]
+          },
+          "children": [
+            {
+              "id": "edge-fixture",
+              "title": "Edge fixture",
+              "tags": [
+                "fixture"
+              ],
+              "fields": {
+                "purpose": "Capture one parser edge case per fixture.",
+                "verify": [
+                  "Fixture name explains the behavior being tested."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

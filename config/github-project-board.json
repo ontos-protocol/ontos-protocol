@@ -1,0 +1,65 @@
+{
+  "title": ".ontos Protocol 1.0 Launch",
+  "owner": "ontos-protocol",
+  "description": "Launch board for .ontos Protocol 1.0.0 release, docs, packages, and launch response.",
+  "statusField": {
+    "name": "Status",
+    "options": [
+      "Backlog",
+      "Ready",
+      "In progress",
+      "In review",
+      "Blocked",
+      "Done"
+    ]
+  },
+  "areaField": {
+    "name": "Area",
+    "options": [
+      "1.0 release gate",
+      "Docs and examples",
+      "Parser and CLI",
+      "Viewer and editor integrations",
+      "Launch response"
+    ]
+  },
+  "suggestedViews": [
+    "1.0 release gate",
+    "Docs and examples",
+    "Parser and CLI",
+    "Viewer and editor integrations",
+    "Launch response"
+  ],
+  "draftItems": [
+    {
+      "title": "Complete final release gate",
+      "area": "1.0 release gate",
+      "body": "Track owner approvals, freeze dates, release notes approval, launch content approval, and final npm run release:check evidence."
+    },
+    {
+      "title": "Publish packages and post-publish smoke",
+      "area": "Parser and CLI",
+      "body": "Publish @ontos-protocol packages in dependency order and record npm run postpublish:smoke output."
+    },
+    {
+      "title": "Deploy docs and hosted viewer demo",
+      "area": "Docs and examples",
+      "body": "Deploy the documentation site and verify the hosted viewer opens examples/project-state.ontos."
+    },
+    {
+      "title": "Create GitHub release and upload artifacts",
+      "area": "1.0 release gate",
+      "body": "Create v1.0.0, publish release notes, and upload archives, demo video, command packs, and SHA256SUMS."
+    },
+    {
+      "title": "Open community starter issues",
+      "area": "Launch response",
+      "body": "Run the community starter issue command pack after labels and repository visibility are ready."
+    },
+    {
+      "title": "Monitor launch feedback",
+      "area": "Launch response",
+      "body": "Monitor issues, discussions, npm install reports, docs errors, and compatibility feedback during launch week."
+    }
+  ]
+}

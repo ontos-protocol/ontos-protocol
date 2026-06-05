@@ -1,0 +1,15 @@
+{
+  "name": "ontos-protocol-viewer-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone static viewer app for .ontos Protocol files.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-viewer-app.mjs",
+    "validate": "node ../../scripts/validate-viewer-app.mjs"
+  },
+  "dependencies": {
+    "@ontos-protocol/viewer": "1.0.0"
+  }
+}

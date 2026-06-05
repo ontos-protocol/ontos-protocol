@@ -1,0 +1,14 @@
+@ontos 1.0
+@title Nested node after ancestor list
+@type parser-fixture
+
+- Root @id(root)
+  history:
+    - Root history entry.
+
+  - Child @id(child)
+    acceptance:
+      - Child acceptance entry.
+
+    - Grandchild @id(grandchild)
+      purpose: This must parse as a node, not as root history.

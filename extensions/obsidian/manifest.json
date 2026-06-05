@@ -1,0 +1,9 @@
+{
+  "id": "ontos-protocol",
+  "name": ".ontos Protocol",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Read, preview, and export .ontos Protocol files in Obsidian.",
+  "author": ".ontos Protocol maintainers",
+  "isDesktopOnly": false
+}

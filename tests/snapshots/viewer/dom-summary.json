@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "fixtures": [
+    {
+      "path": "examples/ai-handoff.ontos",
+      "title": "AI handoff example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "ade0f7f9458ebdbc1b7e0cad66e0a61d3138a60d819453fbbb50e043e7e7c439"
+    },
+    {
+      "path": "examples/app-design.ontos",
+      "title": "App design example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "cd0635f3d52fabacdfcb2631f9cdd2755c40523265ecafa17ef3df6264ddda3f"
+    },
+    {
+      "path": "examples/bug-fix.ontos",
+      "title": "Bug fix example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "e0c928925369badb749f1ff9a54a431e2cadbaa65fb7699a2953bc62295cff9e"
+    },
+    {
+      "path": "examples/open-source-roadmap.ontos",
+      "title": "Open-source roadmap example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "5e0b716d4513f24f7cb9c231dbc0e51e6ead3e9a697a4efc04c77123e3d97896"
+    },
+    {
+      "path": "examples/product-spec.ontos",
+      "title": "Product spec example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "a2c4caab11918931706324cbb04fd9c4991e973d445b0fd9da858e0e6f065813"
+    },
+    {
+      "path": "examples/project-state.ontos",
+      "title": "Project state example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "fbd75d5fbb35b8202fb2212571609c34b9c449d38a6c850780075de8db463c65"
+    },
+    {
+      "path": "examples/release-plan.ontos",
+      "title": "Release plan example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "b9b56fdb3ec7811367c5e92fb57406bd192f7990061756b7cc94a8b72a2541c0"
+    },
+    {
+      "path": "examples/research-notes.ontos",
+      "title": "Research notes example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 2
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "460914078261f6a65e586acecfe24698038085624f2605528bec0586679ab446"
+    },
+    {
+      "path": "examples/review-pack.ontos",
+      "title": "Review pack example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "c25c3eedf0cb359a5e35e301aea0d8e2a2c90095c1cffccaacc0fcac74a26bd1"
+    },
+    {
+      "path": "examples/team-knowledge.ontos",
+      "title": "Team knowledge example",
+      "stats": {
+        "nodes": 3,
+        "fields": 11,
+        "references": 1
+      },
+      "treeitems": 3,
+      "fieldSections": 14,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "1df1e692e6b832cd6f72fcfb89216ac6cbc42b1ccabfe4ffe0203bbb0438db6b"
+    },
+    {
+      "path": "spec/conformance/valid/ai-handoff.ontos",
+      "title": "AI handoff example",
+      "stats": {
+        "nodes": 1,
+        "fields": 6,
+        "references": 0
+      },
+      "treeitems": 1,
+      "fieldSections": 6,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "b1fda46f1529d5d049fec8ebe1a3005efa633b67b0483fb570ea2dc9b2ba34bf"
+    },
+    {
+      "path": "spec/conformance/valid/international-text.ontos",
+      "title": "International text example",
+      "stats": {
+        "nodes": 1,
+        "fields": 3,
+        "references": 0
+      },
+      "treeitems": 1,
+      "fieldSections": 3,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "2ca4e957b80d2fe77238ef05223e6cf8c533322147fc4a0a71febde3fad0155a"
+    },
+    {
+      "path": "spec/conformance/valid/nested-after-list.ontos",
+      "title": "Nested node after ancestor list",
+      "stats": {
+        "nodes": 3,
+        "fields": 3,
+        "references": 0
+      },
+      "treeitems": 3,
+      "fieldSections": 3,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "15da1d7fe951d1cc4d9f00678721cc47b3d953c32c0a46b4576eba4a049e914c"
+    },
+    {
+      "path": "spec/conformance/valid/ordering.ontos",
+      "title": "Ordering fixture",
+      "stats": {
+        "nodes": 3,
+        "fields": 4,
+        "references": 0
+      },
+      "treeitems": 3,
+      "fieldSections": 5,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "2d926484818b81b5e06656a1d6e87c12a3d5cda1ef1bb8712926972ce44d67f7"
+    },
+    {
+      "path": "spec/conformance/valid/project-state.ontos",
+      "title": "Project state example",
+      "stats": {
+        "nodes": 3,
+        "fields": 6,
+        "references": 0
+      },
+      "treeitems": 3,
+      "fieldSections": 11,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "aa402edebacba07d4b9f302f088bc6d732611460674b86c43a74057910b1503b"
+    },
+    {
+      "path": "spec/conformance/valid/rich-fields.ontos",
+      "title": "Rich fields fixture",
+      "stats": {
+        "nodes": 1,
+        "fields": 5,
+        "references": 1
+      },
+      "treeitems": 1,
+      "fieldSections": 5,
+      "exportTargets": [
+        "html",
+        "json",
+        "md",
+        "opml"
+      ],
+      "hasSearch": true,
+      "hasTree": true,
+      "hash": "af889648977fe1ec832d3356455331366fad61164a642b7ca8ca3117723acf52"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+@ontos 1.0
+@title Launch Plan
+@type imported-markdown
+@source-title Migration Source
+@source-owner docs
+@source-status draft
+
+- Launch Plan @id(launch-plan)
+  body: Intro paragraph with [the docs](https://example.com/docs).
+  items:
+    - Validate examples
+    - Export examples
+  ordered:
+    - 1. Prepare release notes
+    - 2. Run dry run
+  quote:
+    - Keep this local-first.
+    - Avoid unsupported claims.
+  table:
+    - | Area | Status |
+    - | --- | --- |
+    - | CLI | Ready |
+  code_language: js
+  code:
+    - const ok = true;
+    - console.log(ok);
+
+  - Scope @id(scope)
+    body: Ship parser and CLI.
+
+  - Scope @id(scope-2)
+    body: Duplicate heading keeps a stable unique ID.

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Product spec example",
+    "type": "product-spec",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "protocol-viewer",
+      "title": "Protocol viewer",
+      "tags": [
+        "product",
+        "viewer"
+      ],
+      "fields": {
+        "status": "planned",
+        "owner": "product",
+        "purpose": "Let users inspect large `.ontos` documents in a browser.",
+        "current": [
+          "Tree navigation, node details, and export actions are required.",
+          "Editing is not required for the first public release."
+        ],
+        "ai_task": "Convert requirements into implementation tickets.",
+        "ai_boundary": "Preserve protocol compatibility and local-first behavior.",
+        "risk": [
+          "A viewer without search may not help with large documents."
+        ],
+        "verify": [
+          "Load official examples.",
+          "Confirm node IDs and references are visible."
+        ],
+        "history": [
+          "2026-06-05 created official product spec example."
+        ]
+      },
+      "children": [
+        {
+          "id": "search-workflow",
+          "title": "Search workflow",
+          "tags": [
+            "search"
+          ],
+          "fields": {
+            "status": "planned",
+            "depends_on": "[[protocol-viewer]]",
+            "acceptance": [
+              "Search matches node titles.",
+              "Search matches field values."
+            ]
+          },
+          "children": [
+            {
+              "id": "empty-state",
+              "title": "Empty state",
+              "tags": [
+                "ux"
+              ],
+              "fields": {
+                "purpose": "Show a useful state before a document is loaded.",
+                "verify": [
+                  "Empty state has no broken controls."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

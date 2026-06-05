@@ -1,0 +1,29 @@
+title: "[RFC discussion] "
+labels: ["rfc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category to discuss an RFC before or after opening the formal RFC issue.
+  - type: input
+    id: related_rfc
+    attributes:
+      label: Related RFC issue
+      description: Link an RFC issue if one exists.
+      placeholder: "https://github.com/ontos-protocol/ontos-protocol/issues/..."
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal or question
+      description: What decision needs discussion?
+      placeholder: "Describe the format, AST, compatibility, API, or governance question."
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility notes
+      description: Describe possible impact on existing `.ontos` files, AST consumers, CLI behavior, or examples.
+      placeholder: "Potential compatibility impact"
+    validations:
+      required: true

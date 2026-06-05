@@ -1,0 +1,20 @@
+{
+  "kind": "review",
+  "document": "Project state example",
+  "nodeId": "parser-package",
+  "path": [
+    "Current release",
+    "Parser package"
+  ],
+  "fields": {
+    "status": "planned",
+    "purpose": "Parse .ontos files into the canonical AST.",
+    "acceptance": [
+      "Valid fixtures parse successfully.",
+      "Invalid fixtures produce expected diagnostics."
+    ]
+  },
+  "linkedReferences": [],
+  "sourceReferences": [],
+  "text": "- Parser package @id(parser-package) #package\n  status: planned\n  purpose: Parse .ontos files into the canonical AST.\n  acceptance:\n    - Valid fixtures parse successfully.\n    - Invalid fixtures produce expected diagnostics.\n"
+}

@@ -1,0 +1,49 @@
+{
+  "missing-title.ontos": [
+    {
+      "code": "ONTOS1001",
+      "severity": "error",
+      "message": "Missing required @title header."
+    }
+  ],
+  "duplicate-id.ontos": [
+    {
+      "code": "ONTOS1203",
+      "severity": "error",
+      "message": "Duplicate node ID: shared-id."
+    }
+  ],
+  "tab-indentation.ontos": [
+    {
+      "code": "ONTOS1102",
+      "severity": "error",
+      "message": "Tabs are not allowed for indentation."
+    }
+  ],
+  "broken-reference.ontos": [
+    {
+      "code": "ONTOS1401",
+      "severity": "error",
+      "message": "Broken node reference: missing-node."
+    }
+  ],
+  "invalid-header.ontos": [
+    {
+      "code": "ONTOS1004",
+      "severity": "error",
+      "message": "Invalid header syntax: @Title Invalid header."
+    },
+    {
+      "code": "ONTOS1001",
+      "severity": "error",
+      "message": "Missing required @title header."
+    }
+  ],
+  "invalid-tag.ontos": [
+    {
+      "code": "ONTOS1204",
+      "severity": "error",
+      "message": "Invalid tag: 发布."
+    }
+  ]
+}

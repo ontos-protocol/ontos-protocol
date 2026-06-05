@@ -1,0 +1,5 @@
+node_modules
+website/dist
+extensions/obsidian/dist
+extensions/obsidian/vault/.obsidian
+package-lock.json

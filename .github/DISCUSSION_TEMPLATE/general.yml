@@ -1,0 +1,35 @@
+title: "[General] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for open-ended project discussion that is not a bug report, feature request, or RFC.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are you trying to understand or discuss?
+      placeholder: "I am using `.ontos` for..."
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the project is most relevant?
+      options:
+        - Format and spec
+        - Parser and CLI
+        - Viewer
+        - Editor integrations
+        - Documentation
+        - Governance or release process
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Useful links or examples
+      description: Add links, commands, or short `.ontos` snippets if relevant.
+      placeholder: "Links, examples, or commands"

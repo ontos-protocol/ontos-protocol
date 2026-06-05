@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label=".ontos Protocol">
+  <rect width="128" height="128" rx="24" fill="#14202e"/>
+  <path d="M34 38h60v10H34zM34 60h44v10H34zM34 82h60v10H34z" fill="#ffffff"/>
+  <circle cx="24" cy="43" r="5" fill="#65c7f7"/>
+  <circle cx="24" cy="65" r="5" fill="#65c7f7"/>
+  <circle cx="24" cy="87" r="5" fill="#65c7f7"/>
+</svg>

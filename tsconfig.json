@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "target": "ES2022"
+  },
+  "include": [
+    "packages/**/*.js",
+    "packages/**/*.d.ts",
+    "scripts/**/*.mjs",
+    "extensions/**/*.js",
+    "website/src/**/*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "website/dist",
+    "extensions/obsidian/dist",
+    "extensions/obsidian/vault/.obsidian"
+  ]
+}

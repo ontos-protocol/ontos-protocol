@@ -1,0 +1,5 @@
+@ontos 1.0
+@title Invalid tag
+
+- 发布计划 @id(release-plan) #发布
+  purpose: Tags are ASCII in .ontos Format 1.0.

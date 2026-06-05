@@ -1,0 +1,41 @@
+{
+  "repository": "ontos-protocol/ontos-protocol",
+  "name": "ontos-protocol",
+  "description": "AI-native structured text protocol for project context",
+  "homepage": "https://ontos-protocol.github.io/ontos-protocol/",
+  "defaultBranch": "main",
+  "prepareVisibility": "private",
+  "launchVisibility": "public",
+  "topics": [
+    "ai",
+    "protocol",
+    "text-format",
+    "markdown",
+    "outline",
+    "developer-tools",
+    "plain-text",
+    "project-management",
+    "structured-text",
+    "cli"
+  ],
+  "requiredStatusChecks": [
+    "Release Check / Node 20.x",
+    "Release Check / Node 22.x"
+  ],
+  "discussionCategories": [
+    "Announcements",
+    "General",
+    "Ideas",
+    "Q&A",
+    "Show and tell",
+    "RFC discussion"
+  ],
+  "npmWorkspaces": [
+    "@ontos-protocol/schema",
+    "@ontos-protocol/parser",
+    "@ontos-protocol/viewer",
+    "@ontos-protocol/cli"
+  ],
+  "releaseTag": "v1.0.0",
+  "docsWorkflow": ".github/workflows/deploy-docs.yml"
+}

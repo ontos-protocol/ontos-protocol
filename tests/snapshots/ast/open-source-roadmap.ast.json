@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Open-source roadmap example",
+    "type": "open-source-roadmap",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "roadmap",
+      "title": "Roadmap",
+      "tags": [
+        "roadmap",
+        "opensource"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "maintainers",
+        "purpose": "Organize public work after the first stable release.",
+        "current": [
+          "Protocol, parser, CLI, and examples form the initial foundation.",
+          "Viewer and editor integrations expand adoption."
+        ],
+        "ai_task": "Turn roadmap nodes into scoped issues.",
+        "ai_boundary": "Do not promise dates without maintainer approval.",
+        "risk": [
+          "A broad roadmap may hide the most important compatibility work."
+        ],
+        "verify": [
+          "Each roadmap item links to a release gate or user workflow.",
+          "Completed work has tests or documentation."
+        ],
+        "history": [
+          "2026-06-05 created official open-source roadmap example."
+        ]
+      },
+      "children": [
+        {
+          "id": "tooling-track",
+          "title": "Tooling track",
+          "tags": [
+            "tooling"
+          ],
+          "fields": {
+            "status": "active",
+            "depends_on": "[[roadmap]]",
+            "acceptance": [
+              "CLI supports validation, formatting, export, import, and packs.",
+              "Packages pass install and publish dry run checks."
+            ]
+          },
+          "children": [
+            {
+              "id": "integration-track",
+              "title": "Integration track",
+              "tags": [
+                "integrations"
+              ],
+              "fields": {
+                "purpose": "Add editor and knowledge-tool integrations after core stability.",
+                "verify": [
+                  "Integration proposals reference stable protocol behavior."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

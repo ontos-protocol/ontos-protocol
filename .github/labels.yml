@@ -1,0 +1,33 @@
+- name: bug
+  color: d73a4a
+  description: Something is broken or confusing.
+- name: documentation
+  color: 0075ca
+  description: Documentation needs to be added, clarified, or corrected.
+- name: enhancement
+  color: a2eeef
+  description: New capability or improvement.
+- name: compatibility
+  color: fbca04
+  description: Format, AST, parser, or tooling compatibility concern.
+- name: conformance
+  color: c5def5
+  description: Official fixtures, snapshots, or interoperability tests.
+- name: security
+  color: b60205
+  description: Security hardening, disclosure, or dependency risk.
+- name: dependencies
+  color: 0366d6
+  description: Dependency updates, lockfile maintenance, or supply-chain review.
+- name: rfc
+  color: 5319e7
+  description: Request for comments on a material project change.
+- name: good first issue
+  color: 7057ff
+  description: Small, well-scoped issue for new contributors.
+- name: help wanted
+  color: 008672
+  description: Maintainers welcome external help.
+- name: release
+  color: 1d76db
+  description: Release preparation, packaging, or operations.

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Bug fix example",
+    "type": "bug-fix",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "formatting-check-bug",
+      "title": "Formatting check bug",
+      "tags": [
+        "bug",
+        "cli"
+      ],
+      "fields": {
+        "status": "resolved",
+        "owner": "cli",
+        "purpose": "Track a CLI argument parsing issue in format checks.",
+        "current": [
+          "Flags before the file path are accepted.",
+          "The command exits with documented status codes."
+        ],
+        "ai_task": "Review whether other commands share the same argument pattern.",
+        "ai_boundary": "Keep the fix limited to CLI parsing and tests.",
+        "risk": [
+          "A loose parser could treat option values as file paths."
+        ],
+        "verify": [
+          "Run ontosfmt format --check examples/bug-fix.ontos.",
+          "Run npm run release:check."
+        ],
+        "history": [
+          "2026-06-05 documented as official bug fix example."
+        ]
+      },
+      "children": [
+        {
+          "id": "reproduction",
+          "title": "Reproduction",
+          "tags": [
+            "test"
+          ],
+          "fields": {
+            "status": "done",
+            "depends_on": "[[formatting-check-bug]]",
+            "acceptance": [
+              "Command accepts flags before files.",
+              "Command accepts flags after files."
+            ]
+          },
+          "children": [
+            {
+              "id": "regression-case",
+              "title": "Regression case",
+              "tags": [
+                "coverage"
+              ],
+              "fields": {
+                "purpose": "Ensure option values are not selected as file arguments.",
+                "verify": [
+                  "CLI smoke test covers format --check."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

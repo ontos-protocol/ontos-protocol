@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Release plan example",
+    "type": "release-plan",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "public-release",
+      "title": "Public release",
+      "tags": [
+        "release",
+        "planning"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "maintainers",
+        "purpose": "Coordinate the first stable open-source release.",
+        "current": [
+          "Release checks run locally and in CI.",
+          "Package dry runs pass before publishing."
+        ],
+        "ai_task": "Identify unchecked launch blockers in priority order.",
+        "ai_boundary": "Do not publish credentials, private names, or unreleased claims.",
+        "risk": [
+          "A rushed release may create compatibility promises too early."
+        ],
+        "verify": [
+          "Run npm run release:check.",
+          "Confirm repository metadata before tagging."
+        ],
+        "history": [
+          "2026-06-05 created official release plan example."
+        ]
+      },
+      "children": [
+        {
+          "id": "release-candidate",
+          "title": "Release candidate",
+          "tags": [
+            "gate"
+          ],
+          "fields": {
+            "status": "planned",
+            "depends_on": "[[public-release]]",
+            "acceptance": [
+              "All official examples validate.",
+              "README quickstart works in a clean directory."
+            ]
+          },
+          "children": [
+            {
+              "id": "tag-checklist",
+              "title": "Tag checklist",
+              "tags": [
+                "checklist"
+              ],
+              "fields": {
+                "purpose": "Prepare changelog, package versions, and release notes.",
+                "verify": [
+                  "Dry run output lists only public runtime files."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

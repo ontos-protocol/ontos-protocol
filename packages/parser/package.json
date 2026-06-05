@@ -1,0 +1,26 @@
+{
+  "name": "@ontos-protocol/parser",
+  "version": "1.0.0",
+  "description": "Reference parser, serializer, formatter, and validator for .ontos Protocol.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "packages/parser"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/packages/parser#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ]
+}

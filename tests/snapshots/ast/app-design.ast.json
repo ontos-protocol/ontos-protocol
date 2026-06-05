@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "App design example",
+    "type": "app-design",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "workspace-design",
+      "title": "Workspace design",
+      "tags": [
+        "app",
+        "design"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "product",
+        "purpose": "Define the structure for a project context workspace.",
+        "current": [
+          "Navigation, node details, and export actions are in scope.",
+          "Marketing pages are out of scope for this document."
+        ],
+        "ai_task": "Suggest interaction improvements without changing public naming.",
+        "ai_boundary": "Do not rename protocol, CLI, npm scope, or package names.",
+        "risk": [
+          "Users may confuse document structure with a task tracker."
+        ],
+        "verify": [
+          "Validate the example with ontosfmt.",
+          "Export to HTML and inspect heading hierarchy."
+        ],
+        "history": [
+          "2026-06-05 created as official app design example."
+        ]
+      },
+      "children": [
+        {
+          "id": "navigation-model",
+          "title": "Navigation model",
+          "tags": [
+            "ux"
+          ],
+          "fields": {
+            "status": "planned",
+            "depends_on": "[[workspace-design]]",
+            "acceptance": [
+              "Node tree supports keyboard focus.",
+              "Current node path remains visible."
+            ]
+          },
+          "children": [
+            {
+              "id": "node-tree-states",
+              "title": "Node tree states",
+              "tags": [
+                "interaction"
+              ],
+              "fields": {
+                "purpose": "Capture expanded, collapsed, focused, and search states.",
+                "verify": [
+                  "Search result count is visible.",
+                  "Focused node can be copied as text."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

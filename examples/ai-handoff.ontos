@@ -1,0 +1,33 @@
+@ontos 1.0
+@title AI handoff example
+@type ai-handoff
+@updated 2026-06-05
+
+- Handoff root @id(handoff-root) #ai #handoff
+  status: active
+  owner: maintainer
+  purpose: Preserve project context without copying unrelated conversation.
+  current:
+    - Exporters and importers have conformance snapshots.
+    - Package smoke checks run in the release gate.
+  ai_task: Continue implementation from the next unchecked release item.
+  ai_boundary: Do not reveal private roadmap names or unrelated products.
+  risk:
+    - A handoff may become stale if release checks are not rerun.
+  verify:
+    - Run ontosfmt pack examples/ai-handoff.ontos --node handoff-root --for handoff.
+    - Validate references before using the handoff.
+  history:
+    - 2026-06-05 created official AI handoff example.
+
+  - Completed work @id(completed-work) #summary
+    status: done
+    depends_on: [[handoff-root]]
+    acceptance:
+      - Completed tasks include evidence.
+      - Remaining tasks stay explicit.
+
+    - Next action @id(next-action) #todo
+      purpose: Pick the highest-risk unchecked release gate.
+      verify:
+        - Compare docs/TASKS.md with current package scripts.

@@ -1,0 +1,34 @@
+title: "[Q&A] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for usage questions. Use issues for reproducible bugs.
+  - type: input
+    id: question
+    attributes:
+      label: Question
+      description: Ask one focused question.
+      placeholder: "How do I export a `.ontos` file to Markdown?"
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Include commands, snippets, or docs pages you already checked.
+      placeholder: "Command, input file, docs link, or expected workflow"
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Authoring
+        - CLI
+        - Parser API
+        - Viewer
+        - Editor integration
+        - Conformance
+        - Release process
+    validations:
+      required: true

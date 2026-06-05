@@ -1,0 +1,12 @@
+@ontos 1.0
+@title Launch Outline
+@type imported-opml
+
+- Release @id(release)
+  status: active
+
+  - Parser @id(parser)
+    owner: core
+
+  - CLI @id(cli)
+    owner: tools

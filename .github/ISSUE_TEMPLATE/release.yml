@@ -1,0 +1,121 @@
+name: Release tracking issue
+description: Track a formal `.ontos Protocol` release from approval through launch response.
+title: "[Release]: v1.0.0"
+labels: ["release"]
+assignees: ""
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this issue form for the formal 1.0.0 release gate. Copy final evidence from `docs/RELEASE_APPROVAL_PACKET_1.0.0.md`.
+  - type: input
+    id: release_version
+    attributes:
+      label: Release version
+      placeholder: "v1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: owners
+    attributes:
+      label: Owners
+      description: Fill every owner before launch.
+      value: |
+        - Release owner:
+        - Protocol specification owner:
+        - Parser and CLI owner:
+        - Viewer owner:
+        - Documentation owner:
+        - Release operations owner:
+        - Security contact:
+        - npm publishing owner:
+        - GitHub repository administrator:
+        - Website deployment owner:
+        - Launch-week triage owner:
+    validations:
+      required: true
+  - type: textarea
+    id: dates
+    attributes:
+      label: Dates
+      description: Confirm dates before release freeze.
+      value: |
+        - Release freeze date:
+        - Documentation freeze date:
+        - Public launch date:
+    validations:
+      required: true
+  - type: checkboxes
+    id: local_gate
+    attributes:
+      label: Local gate
+      options:
+        - label: `npm ci` completed.
+          required: true
+        - label: `npm run release:check` passed on the release commit.
+          required: true
+        - label: Public-boundary scan has zero findings.
+          required: true
+        - label: `git status --short` has no unintended changes.
+          required: true
+  - type: checkboxes
+    id: repository_gate
+    attributes:
+      label: Repository gate
+      options:
+        - label: Repository `ontos-protocol/ontos-protocol` exists.
+          required: true
+        - label: Labels from `.github/labels.yml` are applied.
+          required: true
+        - label: Discussions are enabled with configured categories.
+          required: true
+        - label: Branch protection from `.github/branch-protection-main.json` is applied.
+          required: true
+        - label: Social preview is uploaded.
+          required: true
+  - type: checkboxes
+    id: package_gate
+    attributes:
+      label: Package gate
+      options:
+        - label: `@ontos-protocol/schema@1.0.0` is published.
+          required: true
+        - label: `@ontos-protocol/parser@1.0.0` is published.
+          required: true
+        - label: `@ontos-protocol/viewer@1.0.0` is published.
+          required: true
+        - label: `@ontos-protocol/cli@1.0.0` is published.
+          required: true
+        - label: `npm run postpublish:smoke` passed after publish.
+          required: true
+  - type: checkboxes
+    id: public_launch_gate
+    attributes:
+      label: Public launch gate
+      options:
+        - label: GitHub release `v1.0.0` is published.
+          required: true
+        - label: Documentation site is live.
+          required: true
+        - label: Hosted viewer demo is live.
+          required: true
+        - label: Launch content is approved and published.
+          required: true
+        - label: Launch-week triage watch has started.
+          required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: External evidence
+      description: Record public links and command outputs after external actions complete.
+      value: |
+        - GitHub repository URL:
+        - npm package URLs:
+        - GitHub release URL:
+        - Documentation site URL:
+        - Hosted viewer demo URL:
+        - Launch article URL:
+        - Post-publish smoke output:
+        - First 24-hour monitoring record:
+    validations:
+      required: true

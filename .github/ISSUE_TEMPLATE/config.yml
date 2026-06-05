@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/ontos-protocol/ontos-protocol/security/advisories/new
+    about: Report security issues privately.
+  - name: Usage question
+    url: https://github.com/ontos-protocol/ontos-protocol/discussions/categories/q-a
+    about: Ask usage questions in GitHub Discussions.
+  - name: Release process
+    url: https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/RELEASE_PROCESS.md
+    about: Review the release process before requesting release changes.

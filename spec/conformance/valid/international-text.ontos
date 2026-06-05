@@ -1,0 +1,10 @@
+@ontos 1.0
+@title International text example
+@lang zh-Hans
+
+- 发布计划 @id(release-plan) #i18n
+  purpose: 支持中文标题和字段值。
+  note: Japanese text is allowed in values: こんにちは。
+  quote:
+    - Arabic text is allowed in values: مرحبا.
+    - Emoji can appear in values when tools preserve UTF-8: ✅

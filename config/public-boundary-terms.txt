@@ -1,0 +1,17 @@
+# Forbidden public-surface terms.
+# Keep this file free of sensitive project details when possible; use separated
+# terms in scripts when a scanner rule would otherwise match this file itself.
+
+prototype-wording=M+VP
+pre-1.0-version=v+0+.
+old-format-version=@ontos 0+.+1
+legacy-repository-name=dot+ontos
+legacy-package-scope=@dot+ontos
+wrong-package-namespace=@ontos+fmt
+private-product-name=O+ntos
+private-product-category=desktop+ Agent
+private-project-reference=another+ project
+private-chinese-project-reference=另+一个
+private-chinese-product-category=桌+面
+preview-release-wording=Public+ Preview
+preview-package-wording=preview+ package

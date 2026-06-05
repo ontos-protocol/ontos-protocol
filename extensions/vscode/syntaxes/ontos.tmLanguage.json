@@ -1,0 +1,34 @@
+{
+  "scopeName": "source.ontos",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.ontos",
+      "match": "^\\s*//.*$"
+    },
+    {
+      "name": "keyword.control.header.ontos",
+      "match": "^\\s*@(?:ontos|title|type|updated)\\b.*$"
+    },
+    {
+      "name": "entity.name.section.node.ontos",
+      "match": "^\\s*-\\s+[^@#\\n]+"
+    },
+    {
+      "name": "constant.other.node-id.ontos",
+      "match": "@id\\([a-z][a-z0-9-]*\\)"
+    },
+    {
+      "name": "entity.name.tag.ontos",
+      "match": "#[a-z][a-z0-9-]*"
+    },
+    {
+      "name": "variable.other.field.ontos",
+      "match": "^\\s*[a-z][a-z0-9_]*:"
+    },
+    {
+      "name": "markup.underline.link.reference.ontos",
+      "match": "\\[\\[[^\\]]+\\]\\]"
+    }
+  ],
+  "repository": {}
+}

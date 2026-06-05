@@ -1,0 +1,29 @@
+title: "[Idea] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for early ideas. Compatibility-affecting proposals should become RFC issues before implementation.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What should `.ontos Protocol` make easier?
+      placeholder: "Describe the workflow or improvement."
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Who benefits?
+      description: Describe the users, tools, or repositories that would benefit.
+      placeholder: "AI coding users, maintainers, docs teams, tool builders..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: compatibility
+    attributes:
+      label: Compatibility impact
+      options:
+        - label: This might change syntax, AST output, CLI behavior, package API, or official examples.
+        - label: This can be explored without changing the 1.0 format contract.

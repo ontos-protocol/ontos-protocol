@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "examples": {
+    "ai-handoff.ontos": {
+      "validation": "14ff82dc64fd284b64606a2c9a44d7522a21a6c9b2522b1f066e738e3978e98c",
+      "exports": {
+        "md": "1ae02983f43508bdac158371f44c0c94366cf65e460154ce63c5b24017bd7dd8",
+        "html": "114c53d08114874ea0bd26b233d9b0df9c484cc04831bcb46589dba731f4b64e",
+        "json": "71dbe5bc01d53b6b5f0eac413ceff3e3206b8145bec51443f9d5fc22392e6466",
+        "opml": "6d20b7dc7cf2784e14e2c7ae789713553f712e7db74715283c94cb731e333bee"
+      }
+    },
+    "app-design.ontos": {
+      "validation": "7edcb596360ae1bd4b5cc82db2b9c916255f42e20d54c67782292ffcf22be6b6",
+      "exports": {
+        "md": "be0a57e4f233ad0081cececa9be6f05aea00d17ec276f22e9f4581489bfdf73c",
+        "html": "75da7a4bb6876ebda0e5aeb63cc094aa37822b6284a94beb625d525b11aa46d2",
+        "json": "91ac211c434af5d199ee6d18ba727af23009194684c1e9323af8e8935cc29a2a",
+        "opml": "2a95ce4bbdfbb16b736b514ee581770cdc1ca7d4da10a3de5d373bf61339c398"
+      }
+    },
+    "bug-fix.ontos": {
+      "validation": "410fe9a525c1c2bd9c4ba4a3ea11b2f5703583d689994a9e6347499f0213737b",
+      "exports": {
+        "md": "1867af06a28d6425097f625856eab4313d4157920a7fd84a7139cca5766d53fe",
+        "html": "c875ba26e8d8899743a922d8880bffcbd82212707777093a1644d11a52ca7f12",
+        "json": "6ad93409c8d382f580218b1c8c5b3754806fb82de78215861f2804b95b12d6e3",
+        "opml": "d8774734984a0db7df3d3742b111bc6c5d598206bbb031627401fc5044a6dca0"
+      }
+    },
+    "open-source-roadmap.ontos": {
+      "validation": "ab61080b954da8dd828255e65c8283d12147cb5aaa2cb1c822492af044c79338",
+      "exports": {
+        "md": "648f2806d9d18bf2c8adcb7256596fcf7c2bc490ca78ae58d858f311f173d1ec",
+        "html": "b0220c29f27535870d52d683dee09069e47479be2a32c2ea75b24501c2bebdf8",
+        "json": "7212e2de894686ab5719fdc11c0a9f93c7a07a9e6488a0b8709594cfc7b8797b",
+        "opml": "964363c454c8d10bd60e49089e9bbcfe45934e47edd7e6b88910e5621b7f22a3"
+      }
+    },
+    "product-spec.ontos": {
+      "validation": "fd487c1e611ec6b72b49608aa50d058bb03b0da609efcc226d1019432561e927",
+      "exports": {
+        "md": "91015a7bfe7503ff83772af3836735c9d59b4c2ea95e7b478b2313d6f7ff3982",
+        "html": "8ff597e2978afeba08395eec59fbc8c867bb56b34304a3bcda9342edcb366fa3",
+        "json": "7718c8e47101e5db28eeaf663db799752c0296f5b2f798a1b968904e66adee1f",
+        "opml": "8f5a44f5bb34aa912d95952a895f2eb3df40fa9d7d7cd826551981eeb4fbc8ba"
+      }
+    },
+    "project-state.ontos": {
+      "validation": "57d4abedbea47c23096303bb6d46bb3e7c6ec024f8175b9acfe53a2e2f4ce0df",
+      "exports": {
+        "md": "6f9f20c97fa114a2faf7675ed77406b9e10b40fd1979d3b71d5b957a8d937a7d",
+        "html": "dbf928a5ae4faae76d8ea3d564346268660530c9cdfb600fef4411038c715af1",
+        "json": "bdd2e897d651776ebef899124468462801903bc92fddf840d7a383af65f1507b",
+        "opml": "f03bbecbb2e1131a7ed62a581cf8d31f0c606f7d5a2478361b8485d63161230f"
+      }
+    },
+    "release-plan.ontos": {
+      "validation": "dcb029c06ef576be33571d50b6d2a9aacb4c1f9537b34f8b4f645e4c44bdbea6",
+      "exports": {
+        "md": "3dbf9e455a25e5432f09af81498a3e2036cf5fa633e952cc94a4f82b8afc7ac5",
+        "html": "87c010c32dcdcb0940feda9ce3db78bf37b7c4882e3ea21612a02fc6d00d349d",
+        "json": "8a1abc1cede1c4f39303df8af847a1cbdcfd2263580d785c568b0430cb6c04af",
+        "opml": "caeaf90796cde130e481412ebc21a0aabe51a78a204b8f817767be855c55d4f4"
+      }
+    },
+    "research-notes.ontos": {
+      "validation": "d4e71833441571473e76c0a4ffb7d5f569edeb27ad08f3e7e05375bebf940ba5",
+      "exports": {
+        "md": "2b419d5791f2fb52f8cdecdb0c5149c4ddb9b563a422ea74d1cf916956b4b076",
+        "html": "999a0b1eaac73fcf791d02846e4281e9b480bf188066c9943e2d2f6489f81214",
+        "json": "11bbdde8e57de0563df40efff37010020f82a09fd2fe09140dcd18c332d50179",
+        "opml": "748eda172a15acd309209aaaa4c09641b9abde4fb07ce2337e5b4b6f51aeadaa"
+      }
+    },
+    "review-pack.ontos": {
+      "validation": "fec3ed7a4de17c6f407b6ffdd0cec9e9b2229160f0a5e4011f658416d8b53819",
+      "exports": {
+        "md": "64f2b3783d96bb9148e1445f0576f5585b5583445f691393f08bb881f8755fac",
+        "html": "5d19215225ae4c10712da66cab25e187ea6e78aad8341cd8027f34619afb29a8",
+        "json": "c4c767ba4647ff90b68cd5d71ff658e0e5394429a17cdaeec073819399c517e3",
+        "opml": "99214f7f2a13b3a06e8e9b793a2d4d7f908ce1fdcc2bc0f6aeb53de169989827"
+      }
+    },
+    "team-knowledge.ontos": {
+      "validation": "56cc3a6ece33c2b5bbb075c1a91f33545c8f6a511668ace144adb9463cdfc104",
+      "exports": {
+        "md": "6640eace81fd79f084994c26d3f0cf4f97207456f9f9b14744335d4e17c9dfcd",
+        "html": "ea47490bdd8e85aa42861e8c66beca126d706346659bd2dd1512ef11d39c5b6b",
+        "json": "dd160110ef58a06ee33bfc0d9bbf86da903d7e10dda5da3be76c73712ba72428",
+        "opml": "2df1e2c61d9ec044fc3be989e1dbcee3fce1692ccd85b5cceb0bcb5f3353679b"
+      }
+    }
+  }
+}

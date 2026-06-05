@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "Research notes example",
+    "type": "research-notes",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "adoption-research",
+      "title": "Adoption research",
+      "tags": [
+        "research",
+        "adoption"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "research",
+        "purpose": "Understand how developers evaluate structured project context.",
+        "current": [
+          "Users need fast validation and clear examples.",
+          "Tool builders need stable AST and diagnostics."
+        ],
+        "ai_task": "Cluster findings into product and documentation improvements.",
+        "ai_boundary": "Keep claims evidence-based and avoid unsupported market claims.",
+        "risk": [
+          "Anecdotal feedback may overstate demand."
+        ],
+        "verify": [
+          "Separate observations from recommendations.",
+          "Link each recommendation to evidence."
+        ],
+        "history": [
+          "2026-06-05 created official research notes example."
+        ]
+      },
+      "children": [
+        {
+          "id": "interview-finding",
+          "title": "Interview finding",
+          "tags": [
+            "evidence"
+          ],
+          "fields": {
+            "status": "draft",
+            "depends_on": "[[adoption-research]]",
+            "acceptance": [
+              "Finding includes source date.",
+              "Finding states confidence level."
+            ]
+          },
+          "children": [
+            {
+              "id": "research-recommendation",
+              "title": "Recommendation",
+              "tags": [
+                "decision"
+              ],
+              "fields": {
+                "purpose": "Improve quickstart examples before broad promotion.",
+                "verify": [
+                  "Recommendation references [[interview-finding]]."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

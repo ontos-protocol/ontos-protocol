@@ -1,0 +1,33 @@
+@ontos 1.0
+@title Product spec example
+@type product-spec
+@updated 2026-06-05
+
+- Protocol viewer @id(protocol-viewer) #product #viewer
+  status: planned
+  owner: product
+  purpose: Let users inspect large `.ontos` documents in a browser.
+  current:
+    - Tree navigation, node details, and export actions are required.
+    - Editing is not required for the first public release.
+  ai_task: Convert requirements into implementation tickets.
+  ai_boundary: Preserve protocol compatibility and local-first behavior.
+  risk:
+    - A viewer without search may not help with large documents.
+  verify:
+    - Load official examples.
+    - Confirm node IDs and references are visible.
+  history:
+    - 2026-06-05 created official product spec example.
+
+  - Search workflow @id(search-workflow) #search
+    status: planned
+    depends_on: [[protocol-viewer]]
+    acceptance:
+      - Search matches node titles.
+      - Search matches field values.
+
+    - Empty state @id(empty-state) #ux
+      purpose: Show a useful state before a document is loaded.
+      verify:
+        - Empty state has no broken controls.

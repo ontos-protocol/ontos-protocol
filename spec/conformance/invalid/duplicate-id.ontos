@@ -1,0 +1,9 @@
+@ontos 1.0
+@title Duplicate ID example
+
+- First node @id(shared-id)
+  purpose: First node with shared ID.
+
+- Second node @id(shared-id)
+  purpose: Second node with same ID.
+

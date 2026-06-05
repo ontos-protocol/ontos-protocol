@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "formatVersion": "1.0",
+  "metadata": {
+    "title": "AI handoff example",
+    "type": "ai-handoff",
+    "updated": "2026-06-05"
+  },
+  "nodes": [
+    {
+      "id": "handoff-root",
+      "title": "Handoff root",
+      "tags": [
+        "ai",
+        "handoff"
+      ],
+      "fields": {
+        "status": "active",
+        "owner": "maintainer",
+        "purpose": "Preserve project context without copying unrelated conversation.",
+        "current": [
+          "Exporters and importers have conformance snapshots.",
+          "Package smoke checks run in the release gate."
+        ],
+        "ai_task": "Continue implementation from the next unchecked release item.",
+        "ai_boundary": "Do not reveal private roadmap names or unrelated products.",
+        "risk": [
+          "A handoff may become stale if release checks are not rerun."
+        ],
+        "verify": [
+          "Run ontosfmt pack examples/ai-handoff.ontos --node handoff-root --for handoff.",
+          "Validate references before using the handoff."
+        ],
+        "history": [
+          "2026-06-05 created official AI handoff example."
+        ]
+      },
+      "children": [
+        {
+          "id": "completed-work",
+          "title": "Completed work",
+          "tags": [
+            "summary"
+          ],
+          "fields": {
+            "status": "done",
+            "depends_on": "[[handoff-root]]",
+            "acceptance": [
+              "Completed tasks include evidence.",
+              "Remaining tasks stay explicit."
+            ]
+          },
+          "children": [
+            {
+              "id": "next-action",
+              "title": "Next action",
+              "tags": [
+                "todo"
+              ],
+              "fields": {
+                "purpose": "Pick the highest-risk unchecked release gate.",
+                "verify": [
+                  "Compare docs/TASKS.md with current package scripts."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

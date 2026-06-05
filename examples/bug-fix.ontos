@@ -1,0 +1,33 @@
+@ontos 1.0
+@title Bug fix example
+@type bug-fix
+@updated 2026-06-05
+
+- Formatting check bug @id(formatting-check-bug) #bug #cli
+  status: resolved
+  owner: cli
+  purpose: Track a CLI argument parsing issue in format checks.
+  current:
+    - Flags before the file path are accepted.
+    - The command exits with documented status codes.
+  ai_task: Review whether other commands share the same argument pattern.
+  ai_boundary: Keep the fix limited to CLI parsing and tests.
+  risk:
+    - A loose parser could treat option values as file paths.
+  verify:
+    - Run ontosfmt format --check examples/bug-fix.ontos.
+    - Run npm run release:check.
+  history:
+    - 2026-06-05 documented as official bug fix example.
+
+  - Reproduction @id(reproduction) #test
+    status: done
+    depends_on: [[formatting-check-bug]]
+    acceptance:
+      - Command accepts flags before files.
+      - Command accepts flags after files.
+
+    - Regression case @id(regression-case) #coverage
+      purpose: Ensure option values are not selected as file arguments.
+      verify:
+        - CLI smoke test covers format --check.

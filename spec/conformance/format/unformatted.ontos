@@ -1,0 +1,8 @@
+@title Format fixture
+@ontos 1.0
+
+- Root #beta #alpha @id(root)
+  purpose: Keep formatting stable.
+  current:
+    - One
+    - Two

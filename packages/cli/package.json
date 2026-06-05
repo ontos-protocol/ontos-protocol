@@ -1,0 +1,49 @@
+{
+  "name": "@ontos-protocol/cli",
+  "version": "1.0.0",
+  "description": "ontosfmt command-line tool for .ontos Protocol.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/packages/cli#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "types": "./src/index.d.ts",
+  "bin": {
+    "ontosfmt": "./src/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./exporters": {
+      "types": "./src/exporters.d.ts",
+      "default": "./src/exporters.js"
+    },
+    "./importers": {
+      "types": "./src/importers.d.ts",
+      "default": "./src/importers.js"
+    },
+    "./packs": {
+      "types": "./src/packs.d.ts",
+      "default": "./src/packs.js"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@ontos-protocol/parser": "1.0.0",
+    "@ontos-protocol/schema": "1.0.0",
+    "fast-xml-parser": "^5.8.0"
+  }
+}

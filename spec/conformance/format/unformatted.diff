@@ -1,0 +1,19 @@
+--- spec/conformance/format/unformatted.ontos
++++ spec/conformance/format/unformatted.ontos
+@@ -1 +1 @@
+-@title Format fixture
+-@ontos 1.0
+-
+-- Root #beta #alpha @id(root)
+-  purpose: Keep formatting stable.
+-  current:
+-    - One
+-    - Two
++@ontos 1.0
++@title Format fixture
++
++- Root @id(root) #beta #alpha
++  purpose: Keep formatting stable.
++  current:
++    - One
++    - Two

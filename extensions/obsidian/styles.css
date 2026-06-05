@@ -1,0 +1,37 @@
+.ontos-preview {
+  line-height: 1.5;
+}
+
+.ontos-node {
+  border-left: 1px solid var(--background-modifier-border);
+  margin: 0.5rem 0 0.5rem 0.75rem;
+  padding-left: 0.75rem;
+}
+
+.ontos-node summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.ontos-diagnostics {
+  border: 1px solid var(--text-warning);
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+}
+
+.ontos-references {
+  margin-top: 1rem;
+}
+
+.ontos-reference-link {
+  color: var(--text-accent);
+}
+
+.ontos-reference-missing {
+  color: var(--text-warning);
+}
+
+.ontos-backlinks {
+  border-top: 1px solid var(--background-modifier-border);
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+}

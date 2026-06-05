@@ -1,0 +1,20 @@
+@ontos 1.0
+@title AI handoff example
+@type ai-handoff
+@updated 2026-06-05
+
+- Parser task @id(parser-task) #task #ai
+  context: Implement the reference parser for .ontos Format 1.0.
+  boundary:
+    - Work inside packages/parser.
+    - Preserve public API names.
+  do_not_touch:
+    - Do not rename ontosfmt.
+    - Do not change @ontos-protocol package scope.
+  acceptance:
+    - Valid conformance fixtures parse successfully.
+    - Invalid conformance fixtures produce expected diagnostics.
+  verify:
+    - Run parser unit tests.
+    - Run schema validation against AST snapshots.
+  handoff: Continue with formatter once parser fixtures pass.

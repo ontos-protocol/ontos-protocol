@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Project state example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 2rem; }
+    details { margin-left: 1rem; }
+    summary { cursor: pointer; font-weight: 600; }
+    code { background: #f4f4f4; padding: 0.1rem 0.25rem; }
+  </style>
+</head>
+<body data-ontos-standalone="true">
+  <h1>Project state example</h1>
+<details open id="current-release" data-tags="release" class="tag-release">
+  <summary>Current release</summary>
+  <section data-field="status">
+    <h3>status</h3>
+    <p>active</p>
+  </section>
+  <section data-field="purpose">
+    <h3>purpose</h3>
+    <p>Track the formal open-source release.</p>
+  </section>
+  <section data-field="current">
+    <h3>current</h3>
+    <ul>
+      <li>Format specification is being prepared.</li>
+      <li>Parser and CLI work are planned.</li>
+    </ul>
+  </section>
+  <section data-field="risk">
+    <h3>risk</h3>
+    <ul>
+      <li>Do not publish before conformance fixtures are complete.</li>
+    </ul>
+  </section>
+  <section data-field="verify">
+    <h3>verify</h3>
+    <ul>
+      <li>Run ontosfmt validate examples.</li>
+      <li>Run exporter snapshot tests.</li>
+    </ul>
+  </section>
+  <details open id="parser-package" data-tags="package" class="tag-package">
+    <summary>Parser package</summary>
+    <section data-field="status">
+      <h3>status</h3>
+      <p>planned</p>
+    </section>
+    <section data-field="purpose">
+      <h3>purpose</h3>
+      <p>Parse .ontos files into the canonical AST.</p>
+    </section>
+    <section data-field="acceptance">
+      <h3>acceptance</h3>
+      <ul>
+        <li>Valid fixtures parse successfully.</li>
+        <li>Invalid fixtures produce expected diagnostics.</li>
+      </ul>
+    </section>
+  </details>
+  <details open id="cli-package" data-tags="package" class="tag-package">
+    <summary>CLI package</summary>
+    <section data-field="status">
+      <h3>status</h3>
+      <p>planned</p>
+    </section>
+    <section data-field="purpose">
+      <h3>purpose</h3>
+      <p>Provide validation, formatting, export, import, and pack commands.</p>
+    </section>
+    <section data-field="verify">
+      <h3>verify</h3>
+      <ul>
+        <li>ontosfmt --help prints command list.</li>
+        <li>ontosfmt validate exits with documented codes.</li>
+      </ul>
+    </section>
+  </details>
+</details>
+
+</body>
+</html>

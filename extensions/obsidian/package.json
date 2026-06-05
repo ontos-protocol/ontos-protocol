@@ -1,0 +1,30 @@
+{
+  "name": "ontos-protocol-obsidian",
+  "version": "1.0.0",
+  "description": "Obsidian plugin for .ontos Protocol files.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontos-protocol/ontos-protocol.git",
+    "directory": "extensions/obsidian"
+  },
+  "bugs": {
+    "url": "https://github.com/ontos-protocol/ontos-protocol/issues"
+  },
+  "homepage": "https://github.com/ontos-protocol/ontos-protocol/tree/main/extensions/obsidian#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "private": true,
+  "scripts": {
+    "build": "node ../../scripts/build-obsidian-plugin.mjs"
+  },
+  "dependencies": {
+    "@ontos-protocol/parser": "1.0.0",
+    "@ontos-protocol/cli": "1.0.0"
+  },
+  "devDependencies": {
+    "obsidian": "^1.8.7"
+  }
+}

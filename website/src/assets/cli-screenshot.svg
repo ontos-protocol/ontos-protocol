@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">ontosfmt CLI screenshot</title>
+  <desc id="desc">A terminal showing ontosfmt validation, export, and AI pack commands for .ontos Protocol files.</desc>
+  <rect width="1200" height="720" fill="#f7f9fc"/>
+  <rect x="78" y="70" width="1044" height="580" rx="18" fill="#0f172a"/>
+  <rect x="78" y="70" width="1044" height="54" rx="18" fill="#14202e"/>
+  <circle cx="112" cy="97" r="7" fill="#ff6b6b"/>
+  <circle cx="136" cy="97" r="7" fill="#ffd166"/>
+  <circle cx="160" cy="97" r="7" fill="#06d6a0"/>
+  <text x="190" y="103" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#e5edf7">ontosfmt release check</text>
+  <text x="112" y="166" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#7dd3fc">$ ontosfmt validate examples/project-state.ontos</text>
+  <text x="112" y="202" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#bbf7d0">examples/project-state.ontos: ok</text>
+  <text x="112" y="260" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#7dd3fc">$ ontosfmt export examples/project-state.ontos --to md</text>
+  <text x="112" y="296" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7"># Project state example</text>
+  <text x="112" y="326" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7">- Current release</text>
+  <text x="112" y="356" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7">  - Parser package</text>
+  <text x="112" y="414" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#7dd3fc">$ ontosfmt pack examples/ai-handoff.ontos --node parser-task --for handoff</text>
+  <text x="112" y="450" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7"># .ontos handoff pack</text>
+  <text x="112" y="480" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7">node: parser-task</text>
+  <text x="112" y="510" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#e5edf7">boundary: Use public repository context only.</text>
+  <text x="112" y="568" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#7dd3fc">$ npm run release:check</text>
+  <text x="112" y="604" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#bbf7d0">public surface scan ok · package smoke ok · publish dry run ok</text>
+</svg>
