@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 const dependabot = readFileSync(".github/dependabot.yml", "utf8");
+const ci = readFileSync(".github/workflows/ci.yml", "utf8");
 const codeql = readFileSync(".github/workflows/codeql.yml", "utf8");
 const labels = readFileSync(".github/labels.yml", "utf8");
 const dependencyPolicy = readFileSync("docs/DEPENDENCY_POLICY.md", "utf8");
@@ -20,10 +21,18 @@ for (const required of [
 }
 
 for (const required of [
+  "Install system dependencies",
+  "apt-get install -y ffmpeg"
+]) {
+  assert.ok(ci.includes(required), `CI workflow missing ${required}`);
+}
+
+for (const required of [
   "name: CodeQL",
   "pull_request:",
   "branches:",
   "- main",
+  "actions: read",
   "security-events: write",
   "contents: read",
   "github/codeql-action/init@v3",
