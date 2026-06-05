@@ -30,8 +30,10 @@ for (const required of [
 for (const required of [
   "name: CodeQL",
   "pull_request:",
+  "workflow_dispatch:",
   "branches:",
   "- main",
+  "github.event.repository.private == false",
   "actions: read",
   "security-events: write",
   "contents: read",
