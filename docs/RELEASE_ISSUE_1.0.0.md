@@ -112,6 +112,7 @@ Use this as the tracking issue body for the `v1.0.0` release.
 - [ ] Start launch-week triage watch.
 - [ ] Run `.release/external-release-verification.sh`.
 - [ ] Record external verification output.
+- [ ] Revoke temporary npm publish token and record the result without storing the token value.
 - [ ] Label every issue.
 - [ ] Reply to reproducible install failures first.
 - [ ] Pin known issues if they affect install, docs, or viewer demo.

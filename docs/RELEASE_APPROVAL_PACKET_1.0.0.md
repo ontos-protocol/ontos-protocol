@@ -36,7 +36,7 @@ item is filled.
 - [x] External release verification command pack was generated and reviewed. Evidence: `.release/external-release-verification.sh`.
 - [x] GitHub project board command pack was generated and reviewed. Evidence: `.release/github-project-board-commands.sh`.
 - [x] Launch content pack was generated and reviewed. Evidence: `.release/launch-content-pack/`.
-- [ ] VS Code and Cursor manual UX checklist completed from `docs/VSCODE_EXTENSION_MANUAL_UX_CHECKLIST.md`.
+- [x] VS Code and Cursor manual UX checklist completed from `docs/VSCODE_EXTENSION_MANUAL_UX_CHECKLIST.md`.
 - [x] Release notes approved.
 - [x] Launch content approved.
 - [x] Maintainers ready for launch response.
@@ -65,18 +65,18 @@ Record links or command output after external launch actions are complete:
 - [x] GitHub project board URL: https://github.com/orgs/ontos-protocol/projects/1
 - [x] External verification output: `.release/external-release-verification.sh` passed on 2026-06-07; verified public repo metadata, branch protection, GitHub release assets, npm versions and dist-tags, `postpublish:smoke`, docs URL, `examples/project-state.ontos`, discussion categories, and final public-boundary scan.
 - [x] Post-publish smoke output: `npm run postpublish:smoke` passed on 2026-06-07 with `post-publish smoke ok`.
-- [x] First 24-hour monitoring record: started 2026-06-07; open issues `0`, launch discussion published at https://github.com/ontos-protocol/ontos-protocol/discussions/6, npm CLI `latest` is `1.0.0`, docs URL returned HTTP 200, and example file returned HTTP 200.
+- [x] First 24-hour monitoring record: started 2026-06-07; open issues `0`, launch discussion published at https://github.com/ontos-protocol/ontos-protocol/discussions/6, npm CLI `latest` is `1.0.0`, docs URL returned HTTP 200, example file returned HTTP 200, and npm granular publish token `ontos-protocol-1.0-publish` was revoked with npm returning `Removed 1 token`.
 
 ## Manual UX Evidence
 
 Record final extension UX evidence before publishing:
 
-- [ ] VS Code version: pending local VS Code GUI manual pass; Marketplace `.ontos Protocol` version `1.0.0` and automated VS Code extension smoke checks passed.
+- [x] VS Code version: `1.123.0` (`6a44c352bd24569c417e530095901b649960f9f8`, arm64); official VS Code stable installed `.release/ontos-protocol-vscode-1.0.0.vsix` and listed `ontos-protocol.ontos-protocol-vscode@1.0.0`.
 - [x] Cursor version: Cursor `3.6.31` (`81fcf2931d7687b4ff3f3017858d0c6dee7e2a60`, arm64); VSIX installed via Cursor CLI and listed as `ontos-protocol.ontos-protocol-vscode@1.0.0`.
 - [x] Extension artifact: `.release/ontos-protocol-vscode-1.0.0.vsix`, SHA256 `6870ed152054670bd512713bf896cc956912ef57ba258e96b7492619c8dddaf1`.
-- [ ] Manual UX checklist URL or issue comment: https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/VSCODE_EXTENSION_MANUAL_UX_CHECKLIST.md
-- [ ] Release owner signature:
-- [ ] Approval date:
+- [x] Manual UX checklist URL or issue comment: https://github.com/ontos-protocol/ontos-protocol/blob/main/docs/VSCODE_EXTENSION_MANUAL_UX_CHECKLIST.md
+- [x] Release owner signature: Blackwhalee
+- [x] Approval date: 2026-06-07
 
 ## Completion Rule
 

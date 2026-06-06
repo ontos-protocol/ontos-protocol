@@ -83,6 +83,10 @@ It includes:
 - publish launch article
 - announce release
 
+Published release tags are immutable. Do not move a public tag to pick up
+post-tag operational fixes. Record the difference in the GitHub Release notes,
+land the fix on `main`, and include it in the next patch release.
+
 ### 6. Post-Release
 
 - monitor issues

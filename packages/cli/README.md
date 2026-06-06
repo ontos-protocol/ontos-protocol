@@ -36,6 +36,8 @@ ontosfmt export file.ontos --to opml --opml-fields purpose,status
 ontosfmt convert README.md --to .ontos
 ontosfmt convert README.md --to .ontos --report
 ontosfmt convert outline.opml --to .ontos
+cat README.md | ontosfmt convert - --from md --to .ontos
+cat outline.opml | ontosfmt convert - --from opml --to .ontos
 ontosfmt inspect file.ontos --node node-id
 ontosfmt list nodes file.ontos
 ontosfmt list fields file.ontos
@@ -59,6 +61,11 @@ Supported pack kinds:
 Pack output includes selected fields, selected node text, linked bracket
 references, source-like file or URL references, and optional token budget
 metadata.
+
+Options that require values fail fast when the value is missing, including
+`--to`, `--from`, `--node`, `--for`, `--token-budget`, `--heading-offset`,
+`--opml-fields`, and `--deprecated-fields`. Formatting modes are mutually
+exclusive: use only one of `--check`, `--write`, or `--diff`.
 
 ## Exit Codes
 

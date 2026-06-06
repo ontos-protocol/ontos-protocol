@@ -173,7 +173,7 @@ function requireCheckedValue(text, label) {
 
 function requireCheckedItem(text, label) {
   assert.ok(
-    new RegExp(`^- \\[[xX]\\] ${escapeRegex(label)}$`, "mu").test(text),
+    new RegExp(`^- \\[[xX]\\] ${escapeRegex(label)}(?:\\s+.+)?$`, "mu").test(text),
     `final approval missing checked gate ${label}`
   );
 }

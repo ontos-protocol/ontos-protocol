@@ -56,6 +56,7 @@ The repository includes `.github/workflows/deploy-docs.yml`.
 The workflow:
 
 - runs `npm ci`
+- installs `ffmpeg` on the GitHub Actions runner for demo video validation
 - runs `npm run release:check`
 - uploads `website/dist`
 - deploys through GitHub Pages

@@ -115,6 +115,14 @@ result = invoke(["format", "--diff", formatFixtures.unformatted]);
 assert.equal(result.code, 1);
 assert.equal(result.stdout, snapshot(formatFixtures.diff));
 
+for (const args of [
+  ["format", "--check", "--write", formatFixtures.unformatted],
+  ["format", "--check", "--diff", formatFixtures.unformatted],
+  ["format", "--write", "--diff", formatFixtures.unformatted]
+]) {
+  assert.throws(() => invoke(args), /mutually exclusive/);
+}
+
 for (const invalidFormatFixture of [
   "spec/conformance/invalid/invalid-header.ontos",
   "spec/conformance/invalid/invalid-tag.ontos",
@@ -339,6 +347,18 @@ assert.equal(result.stdout, snapshot(importFixtures.markdownSnapshot));
 result = invoke(["validate", importFixtures.markdownSnapshot]);
 assert.equal(result.code, 0);
 
+result = invoke(["convert", "-", "--from", "md", "--to", ".ontos"], {
+  stdin: snapshot(importFixtures.markdown)
+});
+assert.equal(result.code, 0);
+assert.equal(result.stdout, snapshot(importFixtures.markdownSnapshot));
+
+result = invoke(["convert", "-", "--from", ".md", "--to", ".ontos"], {
+  stdin: snapshot(importFixtures.markdown)
+});
+assert.equal(result.code, 0);
+assert.equal(result.stdout, snapshot(importFixtures.markdownSnapshot));
+
 result = invoke(["convert", importFixtures.complexMarkdown, "--to", ".ontos", "--report"]);
 assert.equal(result.code, 0);
 assert.equal(result.stdout, snapshot(importFixtures.complexMarkdownSnapshot));
@@ -351,6 +371,29 @@ assert.equal(result.code, 0);
 assert.equal(result.stdout, snapshot(importFixtures.opmlSnapshot));
 result = invoke(["validate", importFixtures.opmlSnapshot]);
 assert.equal(result.code, 0);
+
+result = invoke(["convert", "-", "--from", "opml", "--to", ".ontos"], {
+  stdin: snapshot(importFixtures.opml)
+});
+assert.equal(result.code, 0);
+assert.equal(result.stdout, snapshot(importFixtures.opmlSnapshot));
+
+assert.throws(() => invoke(["convert", "-", "--to", ".ontos"], { stdin: snapshot(importFixtures.markdown) }), /requires --from/);
+
+for (const args of [
+  ["export", valid, "--to"],
+  ["inspect", valid, "--node"],
+  ["pack", valid, "--node"],
+  ["pack", valid, "--for"],
+  ["pack", valid, "--node", "current-release", "--token-budget"],
+  ["export", valid, "--to", "md", "--heading-offset"],
+  ["export", valid, "--to", "opml", "--opml-fields"],
+  ["validate", valid, "--deprecated-fields"],
+  ["convert", "-", "--from"],
+  ["export", valid, "--to", "md", "--to"]
+]) {
+  assert.throws(() => invoke(args), /requires a value/);
+}
 
 result = invoke(["schema"]);
 assert.equal(result.code, 0);

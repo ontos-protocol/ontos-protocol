@@ -1496,6 +1496,7 @@ First week:
 - [x] Prepare community starter issue command pack.
 - [ ] Add good first issues.
 - [ ] Add help wanted issues.
+- [ ] Upgrade GitHub Actions workflow runtime before Node 20 action deprecation takes effect.
 - [ ] Review external PRs.
 - [ ] Publish launch follow-up.
 

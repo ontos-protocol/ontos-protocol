@@ -47,6 +47,12 @@ This release targets:
 
 The compatibility policy is documented in `docs/COMPATIBILITY_POLICY.md`.
 
+## Maintenance Note
+
+The public `v1.0.0` tag is immutable. A post-tag GitHub Pages workflow fix
+that installs `ffmpeg` on the Actions runner is on `main`; it will be included
+in the next patch release instead of moving the published tag.
+
 ## Release Links
 
 - README: `README.md`

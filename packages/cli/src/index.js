@@ -46,6 +46,8 @@ export function run(argv, io = defaultIo()) {
     return 0;
   }
 
+  validateValueOptions(args);
+
   switch (command) {
     case "parse":
       return parseCommand(args, io);
@@ -139,6 +141,9 @@ function formatCommand(args, io) {
   const check = hasFlag(args, "--check");
   const write = hasFlag(args, "--write");
   const diff = hasFlag(args, "--diff");
+  if ([check, write, diff].filter(Boolean).length > 1) {
+    throw new Error("format options --check, --write, and --diff are mutually exclusive.");
+  }
   if (files.length > 1 && !check && !write && !diff) {
     throw new Error("Formatting multiple files requires --check, --write, or --diff.");
   }
@@ -254,14 +259,15 @@ function exportCommand(args, io) {
 function convertCommand(args, io) {
   const file = requireFile(args);
   const target = optionValue(args, "--to") ?? ".ontos";
+  const source = convertSource(file, args);
   if (target !== ".ontos") {
     throw new Error(`Unsupported convert target: ${target}`);
   }
-  const input = read(file);
-  const fallbackTitle = basename(file, extname(file));
-  switch (extname(file).toLowerCase()) {
-    case ".md":
-    case ".markdown":
+  const input = read(file, io);
+  const fallbackTitle = file === "-" ? "stdin" : basename(file, extname(file));
+  switch (source) {
+    case "md":
+    case "markdown":
       {
         const result = convertMarkdownToOntosResult(input, fallbackTitle);
         io.out(result.document);
@@ -270,11 +276,11 @@ function convertCommand(args, io) {
         }
       }
       return 0;
-    case ".opml":
+    case "opml":
       io.out(convertOpmlToOntos(input, fallbackTitle));
       return 0;
     default:
-      throw new Error(`Unsupported convert source: ${extname(file) || "unknown"}`);
+      throw new Error(`Unsupported convert source: ${source || "unknown"}`);
   }
 }
 
@@ -400,12 +406,26 @@ function requireFiles(args) {
 }
 
 function fileArgs(args) {
-  return args.filter((arg) => (arg === "-" || !arg.startsWith("-")) && !isOptionValue(args, arg));
+  return args.filter((arg, index) => (arg === "-" || !arg.startsWith("-")) && !isOptionValue(args, index));
 }
 
 function optionValue(args, name) {
   const index = args.indexOf(name);
   return index >= 0 ? args[index + 1] : undefined;
+}
+
+function validateValueOptions(args) {
+  const options = valueOptions();
+  for (let index = 0; index < args.length; index += 1) {
+    const option = args[index];
+    if (!options.has(option)) {
+      continue;
+    }
+    const value = args[index + 1];
+    if (value === undefined || value.startsWith("--")) {
+      throw new Error(`${option} requires a value.`);
+    }
+  }
 }
 
 function integerOption(args, name) {
@@ -434,10 +454,14 @@ function hasFlag(args, name) {
   return args.includes(name);
 }
 
-function isOptionValue(args, arg) {
-  const index = args.indexOf(arg);
-  const valueOptions = new Set([
+function isOptionValue(args, index) {
+  return index > 0 && valueOptions().has(args[index - 1]);
+}
+
+function valueOptions() {
+  return new Set([
     "--to",
+    "--from",
     "--node",
     "--for",
     "--token-budget",
@@ -445,7 +469,25 @@ function isOptionValue(args, arg) {
     "--opml-fields",
     "--deprecated-fields"
   ]);
-  return index > 0 && valueOptions.has(args[index - 1]);
+}
+
+function convertSource(file, args) {
+  const from = optionValue(args, "--from");
+  if (from) {
+    return normalizeConvertSource(from);
+  }
+  if (file === "-") {
+    throw new Error("convert stdin requires --from md or --from opml.");
+  }
+  return normalizeConvertSource(extname(file).toLowerCase().replace(/^\./, ""));
+}
+
+function normalizeConvertSource(value) {
+  const source = String(value).toLowerCase().replace(/^\./, "");
+  if (source === "markdown") {
+    return "md";
+  }
+  return source;
 }
 
 function read(file, io = defaultIo()) {
@@ -615,6 +657,8 @@ Commands:
   export <file> --to json --include-diagnostics --include-source
   export <file> --to opml --opml-fields purpose,status
   convert <file.md|file.opml> --to .ontos [--report]
+  convert - --from md --to .ontos
+  convert - --from opml --to .ontos
                                     Convert Markdown or OPML to .ontos
   inspect <file> --node <id>        Print one node
   list nodes <file>                 List node IDs and titles
