@@ -1332,7 +1332,7 @@ Package checks:
 
 GitHub release:
 
-- [ ] tag `v1.0.0`.
+- [x] tag `v1.0.0`.
 - [x] release notes.
 - [x] changelog.
 - [x] checksums generated for static build archives.
@@ -1442,7 +1442,7 @@ Launch steps:
 
 - [ ] Make repository public.
 - [x] Publish npm packages.
-- [ ] Publish GitHub release `v1.0.0`.
+- [x] Publish GitHub release `v1.0.0`.
 - [ ] Publish docs site.
 - [ ] Publish demo viewer.
 - [ ] Publish launch article.

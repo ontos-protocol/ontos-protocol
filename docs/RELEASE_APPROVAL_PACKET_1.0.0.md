@@ -6,30 +6,30 @@ item is filled.
 
 ## Required Owners
 
-- [ ] Release owner:
-- [ ] Protocol specification owner:
-- [ ] Parser and CLI owner:
-- [ ] Viewer owner:
-- [ ] Documentation owner:
-- [ ] Release operations owner:
-- [ ] Security contact owner:
-- [ ] npm publishing owner:
-- [ ] GitHub repository administrator:
-- [ ] Website deployment owner:
-- [ ] Launch-week triage owner:
+- [x] Release owner: Blackwhalee
+- [x] Protocol specification owner: Blackwhalee
+- [x] Parser and CLI owner: Blackwhalee
+- [x] Viewer owner: Blackwhalee
+- [x] Documentation owner: Blackwhalee
+- [x] Release operations owner: Blackwhalee
+- [x] Security contact owner: Blackwhalee
+- [x] npm publishing owner: Blackwhalee
+- [x] GitHub repository administrator: Blackwhalee
+- [x] Website deployment owner: Blackwhalee
+- [x] Launch-week triage owner: Blackwhalee
 
 ## Required Dates
 
-- [ ] Release freeze date:
-- [ ] Documentation freeze date:
+- [x] Release freeze date: 2026-06-07
+- [x] Documentation freeze date: 2026-06-07
 - [ ] Public launch date:
 
 ## Approval Gates
 
-- [ ] `npm run release:check` passed on the release commit.
-- [ ] Public-boundary scan has zero findings.
-- [ ] Security scan has zero findings.
-- [ ] License scan passed.
+- [x] `npm run release:check` passed on the release commit.
+- [x] Public-boundary scan has zero findings.
+- [x] Security scan has zero findings.
+- [x] License scan passed.
 - [x] Package publish dry run passed. Evidence: four-workspace npm publish dry run passed on 2026-06-07.
 - [x] Release archives and `SHA256SUMS` were generated. Evidence: `npm run release:check` passed on 2026-06-07.
 - [x] External release command pack was generated and reviewed. Evidence: `.release/external-release-commands.sh`.
@@ -52,8 +52,8 @@ Record links or command output after external launch actions are complete:
   - https://www.npmjs.com/package/@ontos-protocol/parser/v/1.0.0
   - https://www.npmjs.com/package/@ontos-protocol/viewer/v/1.0.0
   - https://www.npmjs.com/package/@ontos-protocol/cli/v/1.0.0
-- [ ] Git tag URL:
-- [ ] GitHub release URL:
+- [x] Git tag URL: https://github.com/ontos-protocol/ontos-protocol/releases/tag/v1.0.0
+- [x] GitHub release URL: https://github.com/ontos-protocol/ontos-protocol/releases/tag/v1.0.0
 - [ ] Documentation site URL:
 - [ ] Hosted viewer demo URL:
 - [ ] Open VSX extension URL:
@@ -61,7 +61,7 @@ Record links or command output after external launch actions are complete:
   Evidence: `vsce show ontos-protocol.ontos-protocol-vscode --json` returned `.ontos Protocol` version `1.0.0` on 2026-06-07; Marketplace item page returned HTTP 200 and VSIX SHA256 `6870ed152054670bd512713bf896cc956912ef57ba258e96b7492619c8dddaf1`.
 - [ ] Launch article URL:
 - [ ] Demo video URL, if published:
-- [ ] External command pack URL, if attached:
+- [x] External command pack URL, if attached: https://github.com/ontos-protocol/ontos-protocol/releases/download/v1.0.0/external-release-commands.sh
 - [x] GitHub project board URL: https://github.com/orgs/ontos-protocol/projects/1
 - [ ] External verification output:
 - [x] Post-publish smoke output: `npm run postpublish:smoke` passed on 2026-06-07 with `post-publish smoke ok`.
