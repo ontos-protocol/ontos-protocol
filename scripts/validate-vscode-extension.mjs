@@ -112,6 +112,8 @@ for (const required of [
   "type: \"focus\"",
   "focusNode",
   "data-focused",
+  "grid-template-columns: var(--indent) 16px minmax(0, 1fr) auto",
+  "row.style.setProperty(\"--indent\"",
   "role=\"tree\""
 ]) {
   if (!nativeEditor.includes(required)) {

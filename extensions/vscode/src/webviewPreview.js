@@ -84,10 +84,13 @@ function previewHtml(document) {
     button, input { font: inherit; }
     button { border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 4px; padding: 4px 8px; cursor: pointer; }
     input { flex: 1; min-width: 120px; border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px; background: var(--bg); color: var(--fg); }
-    main { padding: 10px 14px 24px; }
+    main { padding: 10px 18px 24px; }
     details { margin: 6px 0 6px 12px; border-left: 1px solid var(--line); padding-left: 10px; }
     details[data-depth="0"] { margin-left: 0; border-left-color: var(--accent); }
-    summary { cursor: pointer; font-weight: 600; }
+    summary { align-items: center; cursor: pointer; display: flex; font-weight: 600; gap: 6px; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { color: var(--muted); content: "▸"; display: inline-block; flex: 0 0 16px; text-align: center; }
+    details[open] > summary::before { content: "▾"; }
     .tags { color: var(--muted); margin-left: 6px; font-size: 11px; }
     .field { color: var(--muted); margin: 4px 0 4px 12px; overflow-wrap: anywhere; }
     .goto { margin-left: 8px; color: var(--accent); border: 0; padding: 0; text-decoration: underline; }

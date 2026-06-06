@@ -172,12 +172,14 @@ function nativeEditorHtml(source) {
       padding: 8px 10px;
       font-size: 12px;
     }
-    .tree { padding: 8px 6px 24px; }
+    .tree { padding: 10px 14px 24px; }
     .node { margin: 1px 0; }
     .row {
-      display: flex;
+      --indent: 8px;
+      display: grid;
+      grid-template-columns: var(--indent) 16px minmax(0, 1fr) auto;
       align-items: center;
-      gap: 4px;
+      column-gap: 4px;
       padding: 3px 6px;
       border-radius: 4px;
       cursor: pointer;
@@ -189,10 +191,10 @@ function nativeEditorHtml(source) {
       color: var(--vscode-list-activeSelectionForeground, var(--fg));
     }
     .chevron {
-      width: 14px;
+      width: 16px;
       text-align: center;
       color: var(--muted);
-      flex: 0 0 14px;
+      justify-self: center;
     }
     .label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .tag { color: var(--accent); margin-left: 6px; font-size: 11px; }
@@ -203,10 +205,11 @@ function nativeEditorHtml(source) {
       flex: 0 0 auto;
     }
     .row:hover .edit, .row:focus-within .edit { opacity: 1; }
-    .children { margin-left: 14px; border-left: 1px solid var(--line); }
+    .children { margin-left: 0; }
     .children[hidden] { display: none; }
     .fields {
-      margin: 2px 0 6px 28px;
+      --field-indent: 34px;
+      margin: 2px 0 6px var(--field-indent);
       color: var(--muted);
       font-size: 12px;
     }
@@ -256,7 +259,7 @@ function nativeEditorHtml(source) {
 
       const row = document.createElement("div");
       row.className = "row";
-      row.style.paddingLeft = (node.depth * 12 + 6) + "px";
+      row.style.setProperty("--indent", (node.depth * 18 + 8) + "px");
       row.dataset.line = String(node.line);
       if (node.id) row.dataset.nodeId = node.id;
       row.setAttribute("role", "treeitem");
@@ -265,6 +268,9 @@ function nativeEditorHtml(source) {
 
       const chevron = document.createElement("span");
       chevron.className = "chevron";
+      const indent = document.createElement("span");
+      indent.className = "indent";
+      indent.setAttribute("aria-hidden", "true");
       const label = document.createElement("span");
       label.className = "label";
       label.textContent = node.title;
@@ -279,7 +285,7 @@ function nativeEditorHtml(source) {
       edit.className = "edit";
       edit.textContent = "Edit";
       edit.title = "Open this node in text mode";
-      row.append(chevron, label, edit);
+      row.append(indent, chevron, label, edit);
       wrapper.appendChild(row);
 
       const children = document.createElement("div");
@@ -287,6 +293,7 @@ function nativeEditorHtml(source) {
       if (hasFields) {
         const fields = document.createElement("div");
         fields.className = "fields";
+        fields.style.setProperty("--field-indent", (node.depth * 18 + 34) + "px");
         for (const [key, value] of Object.entries(node.fields || {})) {
           const field = document.createElement("div");
           field.className = "field";
