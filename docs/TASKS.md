@@ -1440,23 +1440,23 @@ Pre-launch gate:
 
 Launch steps:
 
-- [ ] Make repository public.
+- [x] Make repository public.
 - [x] Publish npm packages.
 - [x] Publish GitHub release `v1.0.0`.
-- [ ] Publish docs site.
-- [ ] Publish demo viewer.
-- [ ] Publish launch article.
-- [ ] Share GitHub link.
-- [ ] Share demo video.
+- [x] Publish docs site.
+- [x] Publish demo viewer.
+- [x] Publish launch article.
+- [x] Share GitHub link.
+- [x] Share demo video.
 - [ ] Submit Hacker News post.
 - [ ] Submit Product Hunt post if desired.
 - [ ] Share to relevant AI coding communities.
 - [ ] Share to developer tooling communities.
 - [ ] Share to structured notes communities.
-- [ ] Monitor issues.
-- [ ] Monitor discussions.
-- [ ] Monitor package install failures.
-- [ ] Monitor docs errors.
+- [x] Monitor issues.
+- [x] Monitor discussions.
+- [x] Monitor package install failures.
+- [x] Monitor docs errors.
 
 Launch-day response:
 
@@ -1480,11 +1480,11 @@ First 24 hours:
 - [x] Prepare release approval packet.
 - [ ] Triage all issues.
 - [ ] Confirm install path works.
-- [ ] Confirm docs links work.
-- [ ] Confirm examples download correctly.
-- [ ] Confirm viewer demo works.
+- [x] Confirm docs links work.
+- [x] Confirm examples download correctly.
+- [x] Confirm viewer demo works.
 - [x] Confirm npm packages install.
-- [ ] Record top feedback themes.
+- [x] Record top feedback themes.
 
 First week:
 
@@ -1546,10 +1546,10 @@ The first formal open-source release cannot ship until every item below is true.
 - [x] Conformance tests complete.
 - [x] CI complete.
 - [x] Release packages dry-run complete.
-- [ ] Website deployed.
-- [ ] Demo deployed.
-- [ ] Launch content approved.
-- [ ] Maintainers ready for launch response.
+- [x] Website deployed.
+- [x] Demo deployed.
+- [x] Launch content approved.
+- [x] Maintainers ready for launch response.
 
 Release decision:
 

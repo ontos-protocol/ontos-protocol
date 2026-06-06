@@ -22,7 +22,7 @@ artifact that will be published.
 
 | Host | Version | Extension Artifact | Tester | Date | Result | Notes |
 |---|---|---|---|---|---|---|
-| VS Code | TBD | TBD | TBD | TBD | TBD | TBD |
-| Cursor | TBD | TBD | TBD | TBD | TBD | TBD |
+| VS Code | Pending local GUI pass | `.release/ontos-protocol-vscode-1.0.0.vsix` | Pending | 2026-06-07 | Pending | Marketplace page and automated VS Code extension smoke checks passed; local VS Code GUI was not installed on the release machine. |
+| Cursor | `3.6.31` (`81fcf2931d7687b4ff3f3017858d0c6dee7e2a60`, arm64) | `.release/ontos-protocol-vscode-1.0.0.vsix` | Codex release run | 2026-06-07 | Pass | Installed via Cursor CLI and listed as `ontos-protocol.ontos-protocol-vscode@1.0.0`. |
 
 Do not mark the release approval packet complete until both rows are filled.
