@@ -1071,7 +1071,7 @@ Release requirements:
 - [x] Local install test.
 - [x] VSIX build script.
 - [ ] Open VSX publication evidence.
-- [ ] Visual Studio Marketplace publication evidence.
+- [x] Visual Studio Marketplace publication evidence.
 
 Definition of done:
 
@@ -1441,7 +1441,7 @@ Pre-launch gate:
 Launch steps:
 
 - [ ] Make repository public.
-- [ ] Publish npm packages.
+- [x] Publish npm packages.
 - [ ] Publish GitHub release `v1.0.0`.
 - [ ] Publish docs site.
 - [ ] Publish demo viewer.
@@ -1483,7 +1483,7 @@ First 24 hours:
 - [ ] Confirm docs links work.
 - [ ] Confirm examples download correctly.
 - [ ] Confirm viewer demo works.
-- [ ] Confirm npm packages install.
+- [x] Confirm npm packages install.
 - [ ] Record top feedback themes.
 
 First week:

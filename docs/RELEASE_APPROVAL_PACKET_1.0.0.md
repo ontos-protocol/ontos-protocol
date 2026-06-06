@@ -57,7 +57,8 @@ Record links or command output after external launch actions are complete:
 - [ ] Documentation site URL:
 - [ ] Hosted viewer demo URL:
 - [ ] Open VSX extension URL:
-- [ ] Visual Studio Marketplace extension URL:
+- [x] Visual Studio Marketplace extension URL: https://marketplace.visualstudio.com/items?itemName=ontos-protocol.ontos-protocol-vscode
+  Evidence: `vsce show ontos-protocol.ontos-protocol-vscode --json` returned `.ontos Protocol` version `1.0.0` on 2026-06-07; Marketplace item page returned HTTP 200 and VSIX SHA256 `6870ed152054670bd512713bf896cc956912ef57ba258e96b7492619c8dddaf1`.
 - [ ] Launch article URL:
 - [ ] Demo video URL, if published:
 - [ ] External command pack URL, if attached:
