@@ -18,7 +18,7 @@
   },
   "types": "./src/index.d.ts",
   "bin": {
-    "ontosfmt": "./src/index.js"
+    "ontosfmt": "src/index.js"
   },
   "exports": {
     ".": {

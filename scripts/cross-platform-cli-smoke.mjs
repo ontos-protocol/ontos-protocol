@@ -4,7 +4,7 @@ import { run } from "../packages/cli/src/index.js";
 
 const manifest = JSON.parse(readFileSync("packages/cli/package.json", "utf8"));
 
-if (manifest.bin?.ontosfmt !== "./src/index.js") {
+if (manifest.bin?.ontosfmt !== "src/index.js") {
   throw new Error("CLI bin mapping for ontosfmt is incorrect.");
 }
 
