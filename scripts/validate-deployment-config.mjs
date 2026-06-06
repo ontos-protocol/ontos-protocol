@@ -10,6 +10,8 @@ const workflowText = readFileSync(workflow, "utf8");
 for (const required of [
   "actions/upload-pages-artifact@v3",
   "actions/deploy-pages@v4",
+  "Install system dependencies",
+  "apt-get install -y ffmpeg",
   "npm run release:check",
   "path: website/dist"
 ]) {
