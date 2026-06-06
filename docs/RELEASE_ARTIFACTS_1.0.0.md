@@ -143,7 +143,7 @@ Expected command output:
 
 - `.release/github-project-board-commands.sh`
 
-The command pack creates the `.ontos Protocol 1.0 Launch` project, Status and
+The command pack creates the `.ontos Protocol 1.0 Launch` project, Launch Status and
 Area fields, and launch tracking draft items. Suggested views are defined in
 `config/github-project-board.json`.
 

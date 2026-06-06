@@ -21,14 +21,20 @@ assert.ok(config.areaField.options.length >= 5, "area field needs suggested view
 assert.ok(config.draftItems.length >= 5, "project board needs launch draft items");
 
 const commands = [
-  section("0. Project Scope"),
-  command("gh", "auth", "refresh", "-s", "project"),
-  section("1. Create Project"),
-  "PROJECT_NUMBER=$(gh project create --owner " + quoteShell(config.owner) + " --title " + quoteShell(config.title) + " --format json --jq .number)",
-  "echo \"Created or selected project number: $PROJECT_NUMBER\"",
+  section("0. Verify Project Scope"),
+  "gh project list --owner " + quoteShell(config.owner) + " --limit 1 >/dev/null",
+  section("1. Create or Select Project"),
+  "PROJECT_NUMBER=$(gh project list --owner " + quoteShell(config.owner) + " --format json --jq " + quoteShell(`.projects[] | select(.title == ${JSON.stringify(config.title)}) | .number`) + " | head -n 1)",
+  'if [ -z "${PROJECT_NUMBER}" ]; then',
+  "  PROJECT_NUMBER=$(gh project create --owner " + quoteShell(config.owner) + " --title " + quoteShell(config.title) + " --format json --jq .number)",
+  "  echo \"Created project number: $PROJECT_NUMBER\"",
+  "else",
+  "  echo \"Selected existing project number: $PROJECT_NUMBER\"",
+  "fi",
   "",
   section("2. Create Fields"),
-  command(
+  fieldCommand(
+    config.statusField.name,
     "gh",
     "project",
     "field-create",
@@ -42,7 +48,8 @@ const commands = [
     "--single-select-options",
     config.statusField.options.join(",")
   ),
-  command(
+  fieldCommand(
+    config.areaField.name,
     "gh",
     "project",
     "field-create",
@@ -56,7 +63,8 @@ const commands = [
     "--single-select-options",
     config.areaField.options.join(",")
   ),
-  command(
+  fieldCommand(
+    "Evidence URL",
     "gh",
     "project",
     "field-create",
@@ -69,18 +77,7 @@ const commands = [
     "TEXT"
   ),
   section("3. Create Draft Items"),
-  ...config.draftItems.map((item) => command(
-    "gh",
-    "project",
-    "item-create",
-    "$PROJECT_NUMBER",
-    "--owner",
-    config.owner,
-    "--title",
-    item.title,
-    "--body",
-    `Area: ${item.area}\n\n${item.body}`
-  )),
+  ...config.draftItems.map((item) => itemCommand(item)),
   section("4. Manual View Setup"),
   ...config.suggestedViews.map((view) => `echo "Create project view manually: ${view}"`),
   "",
@@ -99,9 +96,10 @@ const script = [
 
 if (shouldCheck) {
   for (const required of [
-    "gh auth refresh -s project",
+    "gh project list --owner ontos-protocol --limit 1 >/dev/null",
+    "Selected existing project number: $PROJECT_NUMBER",
     "gh project create --owner ontos-protocol --title '.ontos Protocol 1.0 Launch'",
-    "gh project field-create $PROJECT_NUMBER --owner ontos-protocol --name Status --data-type SINGLE_SELECT",
+    "gh project field-create $PROJECT_NUMBER --owner ontos-protocol --name 'Launch Status' --data-type SINGLE_SELECT",
     "Backlog,Ready,In progress,In review,Blocked,Done",
     "gh project field-create $PROJECT_NUMBER --owner ontos-protocol --name Area --data-type SINGLE_SELECT",
     "1.0 release gate,Docs and examples,Parser and CLI,Viewer and editor integrations,Launch response",
@@ -129,6 +127,41 @@ function command(...parts) {
 
 function section(title) {
   return `\n# ${title}`;
+}
+
+function fieldCommand(name, ...createParts) {
+  const jq = `.fields[] | select(.name == ${JSON.stringify(name)}) | .id`;
+  return [
+    `if gh project field-list $PROJECT_NUMBER --owner ${quoteShell(config.owner)} --format json --jq ${quoteShell(jq)} | grep -q .; then`,
+    `  echo ${quoteShell(`Field exists: ${name}`)}`,
+    "else",
+    `  ${command(...createParts).trimEnd()}`,
+    "fi",
+    ""
+  ].join("\n");
+}
+
+function itemCommand(item) {
+  const jq = `.items[] | select((.content.title // .title // "") == ${JSON.stringify(item.title)}) | .id`;
+  return [
+    `if gh project item-list $PROJECT_NUMBER --owner ${quoteShell(config.owner)} --format json --limit 100 --jq ${quoteShell(jq)} | grep -q .; then`,
+    `  echo ${quoteShell(`Draft item exists: ${item.title}`)}`,
+    "else",
+    `  ${command(
+      "gh",
+      "project",
+      "item-create",
+      "$PROJECT_NUMBER",
+      "--owner",
+      config.owner,
+      "--title",
+      item.title,
+      "--body",
+      `Area: ${item.area}\n\n${item.body}`
+    ).trimEnd()}`,
+    "fi",
+    ""
+  ].join("\n");
 }
 
 function quoteShell(value) {

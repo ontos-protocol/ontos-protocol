@@ -178,9 +178,9 @@ for (const token of [
 
 const projectCommands = readFileSync(".release/github-project-board-commands.sh", "utf8");
 for (const token of [
-  "gh auth refresh -s project",
+  "gh project list --owner ontos-protocol --limit 1 >/dev/null",
   "gh project create --owner ontos-protocol --title '.ontos Protocol 1.0 Launch'",
-  "gh project field-create $PROJECT_NUMBER --owner ontos-protocol --name Status",
+  "gh project field-create $PROJECT_NUMBER --owner ontos-protocol --name 'Launch Status'",
   "Backlog,Ready,In progress,In review,Blocked,Done",
   "gh project item-create $PROJECT_NUMBER --owner ontos-protocol"
 ]) {

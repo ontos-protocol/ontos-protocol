@@ -101,7 +101,7 @@ npm run validate:project-commands
 bash .release/github-project-board-commands.sh
 ```
 
-This creates `.ontos Protocol 1.0 Launch` with Status and Area fields plus
+This creates `.ontos Protocol 1.0 Launch` with Launch Status and Area fields plus
 initial launch tracking items. Configure views from `config/github-project-board.json`
 in the GitHub UI if needed.
 

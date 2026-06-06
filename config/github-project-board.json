@@ -3,7 +3,7 @@
   "owner": "ontos-protocol",
   "description": "Launch board for .ontos Protocol 1.0.0 release, docs, packages, and launch response.",
   "statusField": {
-    "name": "Status",
+    "name": "Launch Status",
     "options": [
       "Backlog",
       "Ready",
