@@ -30,12 +30,12 @@ item is filled.
 - [ ] Public-boundary scan has zero findings.
 - [ ] Security scan has zero findings.
 - [ ] License scan passed.
-- [ ] Package publish dry run passed.
-- [ ] Release archives and `SHA256SUMS` were generated.
-- [ ] External release command pack was generated and reviewed.
-- [ ] External release verification command pack was generated and reviewed.
-- [ ] GitHub project board command pack was generated and reviewed.
-- [ ] Launch content pack was generated and reviewed.
+- [x] Package publish dry run passed. Evidence: four-workspace npm publish dry run passed on 2026-06-07.
+- [x] Release archives and `SHA256SUMS` were generated. Evidence: `npm run release:check` passed on 2026-06-07.
+- [x] External release command pack was generated and reviewed. Evidence: `.release/external-release-commands.sh`.
+- [x] External release verification command pack was generated and reviewed. Evidence: `.release/external-release-verification.sh`.
+- [x] GitHub project board command pack was generated and reviewed. Evidence: `.release/github-project-board-commands.sh`.
+- [x] Launch content pack was generated and reviewed. Evidence: `.release/launch-content-pack/`.
 - [ ] VS Code and Cursor manual UX checklist completed from `docs/VSCODE_EXTENSION_MANUAL_UX_CHECKLIST.md`.
 - [ ] Release notes approved.
 - [ ] Launch content approved.
@@ -45,9 +45,13 @@ item is filled.
 
 Record links or command output after external launch actions are complete:
 
-- [ ] GitHub repository URL:
-- [ ] Branch protection confirmation:
-- [ ] npm package URLs:
+- [x] GitHub repository URL: https://github.com/ontos-protocol/ontos-protocol
+- [ ] Branch protection confirmation: blocked while repository is private on the current GitHub plan; enable after public switch or plan upgrade.
+- [x] npm package URLs:
+  - https://www.npmjs.com/package/@ontos-protocol/schema/v/1.0.0
+  - https://www.npmjs.com/package/@ontos-protocol/parser/v/1.0.0
+  - https://www.npmjs.com/package/@ontos-protocol/viewer/v/1.0.0
+  - https://www.npmjs.com/package/@ontos-protocol/cli/v/1.0.0
 - [ ] Git tag URL:
 - [ ] GitHub release URL:
 - [ ] Documentation site URL:
@@ -57,9 +61,9 @@ Record links or command output after external launch actions are complete:
 - [ ] Launch article URL:
 - [ ] Demo video URL, if published:
 - [ ] External command pack URL, if attached:
-- [ ] GitHub project board URL:
+- [x] GitHub project board URL: https://github.com/orgs/ontos-protocol/projects/1
 - [ ] External verification output:
-- [ ] Post-publish smoke output:
+- [x] Post-publish smoke output: `npm run postpublish:smoke` passed on 2026-06-07 with `post-publish smoke ok`.
 - [ ] First 24-hour monitoring record:
 
 ## Manual UX Evidence
