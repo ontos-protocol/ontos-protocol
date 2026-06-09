@@ -12,7 +12,7 @@ VSIX locally:
 
 ```bash
 npm run release:vscode-vsix
-code --install-extension .release/ontos-protocol-vscode-1.0.0.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.1.vsix
 ```
 
 See the repository-level
@@ -73,9 +73,9 @@ Settings:
 - `ontos.depthBands`: disabled by default; adds subtle nesting bands in plain text mode
 
 The default experience is the tree custom editor. Use Open as Text when editing
-source lines directly. VS Code keeps folding controls in the gutter, so text
-mode adds indentation guides as a visual aid instead of trying to move the
-gutter controls.
+source lines directly. Text mode suppresses VS Code's native folding gutter for
+`.ontos` files so users do not see a second set of left-edge disclosure
+controls competing with the tree editor.
 
 Local development smoke check:
 

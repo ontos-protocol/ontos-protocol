@@ -23,8 +23,11 @@ try {
 
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
   assert.equal(manifest.main, "./dist/extension.js");
+  assert.equal(manifest.version, "1.0.1");
   assert.equal(manifest.contributes.customEditors[0].viewType, "ontos.nativeViewer");
   assert.equal(manifest.configurationDefaults["workbench.editorAssociations"]["*.ontos"], "ontos.nativeViewer");
+  assert.equal(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never");
+  assert.equal(manifest.configurationDefaults["[ontos]"]["editor.folding"], false);
 
   const installDir = join(temp, `${manifest.publisher}.${manifest.name}-${manifest.version}`);
   mkdirSync(installDir, { recursive: true });
@@ -60,6 +63,7 @@ try {
   assert.match(installedBundle, /openCustomDocument/u);
   assert.match(installedBundle, /registerCustomEditorProvider/u);
   assert.match(installedBundle, /suppressTreePromotion/u);
+  assert.match(installedBundle, /isOntosDocument/u);
   assert.match(installedBundle, /ontos\.openAsText/u);
   assert.match(installedBundle, /ontos\.reviewPack/u);
   assert.match(installedBundle, /ontos\.copyNodeText/u);

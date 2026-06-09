@@ -58,7 +58,7 @@ function validateVsCodePackage() {
   }
 
   const manifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
-  if (manifest.version !== "1.0.0" || manifest.publisher !== "ontos-protocol") {
+  if (manifest.version !== "1.0.1" || manifest.publisher !== "ontos-protocol") {
     throw new Error("VS Code package metadata is not ready for release.");
   }
   if (manifest.main !== "./dist/extension.js") {
@@ -69,6 +69,12 @@ function validateVsCodePackage() {
   }
   if (manifest.configurationDefaults?.["workbench.editorAssociations"]?.["*.ontos"] !== "ontos.nativeViewer") {
     throw new Error("VS Code package must associate .ontos files with the tree custom editor.");
+  }
+  if (
+    manifest.configurationDefaults?.["[ontos]"]?.["editor.showFoldingControls"] !== "never" ||
+    manifest.configurationDefaults?.["[ontos]"]?.["editor.folding"] !== false
+  ) {
+    throw new Error("VS Code package must suppress text-mode folding gutter controls for .ontos files.");
   }
 
   const bundle = readFileSync("extensions/vscode/dist/extension.js", "utf8");
@@ -82,7 +88,8 @@ function validateVsCodePackage() {
     "ontos.copyNodeText",
     "ontos.convertMarkdown",
     "createTransientNodePack",
-    "suppressTreePromotion"
+    "suppressTreePromotion",
+    "isOntosDocument"
   ]) {
     if (!bundle.includes(required)) {
       throw new Error(`VS Code package bundle is missing ${required}.`);

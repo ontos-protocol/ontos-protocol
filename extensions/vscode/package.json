@@ -2,7 +2,7 @@
   "name": "ontos-protocol-vscode",
   "displayName": ".ontos Protocol",
   "description": "VS Code language support for .ontos Protocol files.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "ontos-protocol",
   "license": "MIT",
   "repository": {
@@ -262,8 +262,9 @@
     "[ontos]": {
       "editor.guides.indentation": true,
       "editor.guides.highlightActiveIndentation": true,
-      "editor.showFoldingControls": "mouseover",
-      "editor.foldingHighlight": true,
+      "editor.showFoldingControls": "never",
+      "editor.folding": false,
+      "editor.foldingHighlight": false,
       "editor.glyphMargin": false
     }
   },

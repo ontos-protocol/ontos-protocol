@@ -7,6 +7,7 @@ import {
   writeFileSync
 } from "node:fs";
 import { dirname } from "node:path";
+import { vscodeVsixArtifact } from "./build-vscode-vsix.mjs";
 
 const args = new Set(process.argv.slice(2));
 const writeIndex = process.argv.indexOf("--write");
@@ -18,6 +19,7 @@ const outputPath = shouldWrite ? process.argv[writeIndex + 1] : null;
 const settings = JSON.parse(readFileSync("config/repository-settings.json", "utf8"));
 const labels = parseLabels(readFileSync(".github/labels.yml", "utf8"));
 const packages = settings.npmWorkspaces;
+const vscodeVsixPath = vscodeVsixArtifact.path;
 
 const commands = [
   section("0. Tool And Local Gate Preflight"),
@@ -117,8 +119,8 @@ const commands = [
   ...packages.map((workspace) => command("npm", "view", `${workspace}@1.0.0`, "version")),
   section("8b. VS Code Extension Publishing"),
   command("npm", "run", "release:vscode-vsix"),
-  command("npx", "--yes", "ovsx@1.0.0", "publish", ".release/ontos-protocol-vscode-1.0.0.vsix", "--publisher", "ontos-protocol"),
-  command("npx", "--yes", "@vscode/vsce@3.9.2", "publish", "--packagePath", ".release/ontos-protocol-vscode-1.0.0.vsix"),
+  command("npx", "--yes", "ovsx@1.0.0", "publish", vscodeVsixPath, "--publisher", "ontos-protocol"),
+  command("npx", "--yes", "@vscode/vsce@3.9.2", "publish", "--packagePath", vscodeVsixPath),
   section("9. Tag And GitHub Release"),
   command("git", "tag", "-a", settings.releaseTag, "-m", ".ontos Protocol 1.0.0"),
   command("git", "push", "origin", settings.releaseTag),
@@ -145,7 +147,7 @@ const commands = [
     settings.releaseTag,
     ".release/ontos-viewer-1.0.0.tar.gz",
     ".release/ontos-docs-1.0.0.tar.gz",
-    ".release/ontos-protocol-vscode-1.0.0.vsix",
+    vscodeVsixPath,
     ".release/ontos-protocol-60s-demo.mp4",
     ".release/external-release-commands.sh",
     ".release/SHA256SUMS",
@@ -215,8 +217,8 @@ if (shouldCheck) {
     "npm publish --access public -w @ontos-protocol/viewer",
     "npm publish --access public -w @ontos-protocol/cli",
     "npm run release:vscode-vsix",
-    "ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix",
-    "@vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.0.vsix",
+    `ovsx@1.0.0 publish ${vscodeVsixPath}`,
+    `@vscode/vsce@3.9.2 publish --packagePath ${vscodeVsixPath}`,
     "npm run demo:video",
     "npm run validate:demo-video",
     "gh release upload v1.0.0",

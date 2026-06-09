@@ -11,6 +11,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const releaseDir = ".release";
+const vscodeManifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
+const vscodeVsixName = `ontos-protocol-vscode-${vscodeManifest.version}.vsix`;
 const expectedArchives = [
   {
     name: "ontos-viewer-1.0.0.tar.gz",
@@ -23,7 +25,7 @@ const expectedArchives = [
 ];
 const expectedFiles = [
   ...expectedArchives.map((archive) => archive.name),
-  "ontos-protocol-vscode-1.0.0.vsix"
+  vscodeVsixName
 ];
 
 for (const name of expectedFiles) {
@@ -53,7 +55,7 @@ for (const archive of expectedArchives) {
   }
 }
 
-const vsixBytes = readFileSync(join(releaseDir, "ontos-protocol-vscode-1.0.0.vsix"));
+const vsixBytes = readFileSync(join(releaseDir, vscodeVsixName));
 assert.ok(vsixBytes.subarray(0, 2).equals(Buffer.from("PK")), "VSIX should be a zip archive");
 
 console.log("release archives ok");

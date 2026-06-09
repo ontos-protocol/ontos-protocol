@@ -77,14 +77,14 @@ export function activate(context) {
   );
 
   const validateDocument = (document) => {
-    if (document.languageId !== "ontos") {
+    if (!isOntosDocument(document)) {
       return;
     }
     diagnostics.set(document.uri, createDiagnostics(document));
   };
 
   const refreshUi = (document) => {
-    const activeDocument = document?.languageId === "ontos" ? document : activeOntosDocument(false);
+    const activeDocument = isOntosDocument(document) ? document : activeOntosDocument(false);
     const isOntos = Boolean(activeDocument);
     void vscode.commands.executeCommand("setContext", "ontos:active", isOntos);
     if (!activeDocument) {
@@ -102,7 +102,7 @@ export function activate(context) {
   };
 
   const handleOntosDocument = (document) => {
-    if (document.languageId !== "ontos") {
+    if (!isOntosDocument(document)) {
       return;
     }
     validateDocument(document);
@@ -128,7 +128,7 @@ export function activate(context) {
       }
     }),
     vscode.window.onDidChangeActiveTextEditor((editor) => {
-      if (editor?.document.languageId === "ontos") {
+      if (isOntosDocument(editor?.document)) {
         schedulePromoteToTreeViewer(editor.document.uri);
       }
       refreshUi(editor?.document);
@@ -144,6 +144,9 @@ export function activate(context) {
       const enabled = vscode.workspace.getConfiguration("ontos").get("validateOnSave", true);
       if (enabled) {
         validateDocument(document);
+      }
+      if (isOntosDocument(document)) {
+        schedulePromoteToTreeViewer(document.uri);
       }
       refreshUi(document);
       indentDecorations.refresh(document);
@@ -486,7 +489,7 @@ async function convertActiveMarkdown() {
 
 function activeOntosDocument(showWarning = true) {
   const editorDocument = vscode.window.activeTextEditor?.document;
-  if (editorDocument?.languageId === "ontos") {
+  if (isOntosDocument(editorDocument)) {
     return editorDocument;
   }
 
@@ -509,6 +512,13 @@ function activeOntosDocument(showWarning = true) {
     vscode.window.showWarningMessage("Open a .ontos document first.");
   }
   return undefined;
+}
+
+function isOntosDocument(document) {
+  return Boolean(document && (
+    document.languageId === "ontos" ||
+    document.uri?.fsPath?.toLowerCase().endsWith(".ontos")
+  ));
 }
 
 function nodeAtCursor(document, line) {

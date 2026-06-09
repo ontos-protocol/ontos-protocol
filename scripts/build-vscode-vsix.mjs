@@ -11,14 +11,14 @@ import {
 import { basename, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const version = "1.0.0";
 const extensionDir = "extensions/vscode";
 const releaseDir = ".release";
+const manifestPath = join(extensionDir, "package.json");
+const version = JSON.parse(readFileSync(manifestPath, "utf8")).version;
 const outputName = `ontos-protocol-vscode-${version}.vsix`;
 
 export function buildVsCodeVsix(options = {}) {
   const { updateChecksums = true } = options;
-  const manifestPath = join(extensionDir, "package.json");
   assert.ok(existsSync(manifestPath), "missing VS Code extension package.json");
 
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));

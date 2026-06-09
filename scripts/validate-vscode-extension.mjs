@@ -15,7 +15,10 @@ assertEqual(manifest.configurationDefaults["workbench.editorAssociations"]["*.on
 assertEqual(manifest.contributes.configuration.properties["ontos.indentGuides"].default, true, "indent guides default");
 assertEqual(manifest.contributes.configuration.properties["ontos.depthBands"].default, false, "depth bands default");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.guides.indentation"], true, "ontos indentation guides");
-assertEqual(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "mouseover", "ontos folding controls");
+assertEqual(manifest.version, "1.0.1", "version");
+assertEqual(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never", "ontos folding controls");
+assertEqual(manifest.configurationDefaults["[ontos]"]["editor.folding"], false, "ontos text folding");
+assertEqual(manifest.configurationDefaults["[ontos]"]["editor.foldingHighlight"], false, "ontos folding highlight");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.glyphMargin"], false, "ontos glyph margin");
 
 execFileSync(process.execPath, ["scripts/build-vscode-extension.mjs"], {
@@ -87,6 +90,7 @@ for (const required of [
   "registerCustomEditorProvider",
   "openAsTextEditor",
   "promoteToTreeViewer",
+  "isOntosDocument",
   "registerIndentDecorations",
   "createTextEditorDecorationType",
   "convertMarkdownToOntosResult",

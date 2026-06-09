@@ -50,12 +50,15 @@ const requiredBuildPaths = [
   "extensions/obsidian/dist/manifest.json"
 ];
 
+const vscodeManifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
+const vscodeVsixPath = `.release/ontos-protocol-vscode-${vscodeManifest.version}.vsix`;
+
 const requiredReleasePaths = [
   ".release/external-release-commands.sh",
   ".release/external-release-verification.sh",
   ".release/github-project-board-commands.sh",
   ".release/community-starter-issues.sh",
-  ".release/ontos-protocol-vscode-1.0.0.vsix",
+  vscodeVsixPath,
   ".release/launch-content-pack/README.md",
   ".release/launch-content-pack/launch-article.md",
   ".release/launch-content-pack/x-thread.md",
@@ -140,10 +143,10 @@ for (const token of [
   "npm run validate:launch-content",
   "npm publish --access public -w @ontos-protocol/cli",
   "npm run release:vscode-vsix",
-  "ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix",
-  "@vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.0.vsix",
+  `ovsx@1.0.0 publish ${vscodeVsixPath}`,
+  `@vscode/vsce@3.9.2 publish --packagePath ${vscodeVsixPath}`,
   "gh release upload v1.0.0",
-  ".release/ontos-protocol-vscode-1.0.0.vsix",
+  vscodeVsixPath,
   "bash .release/github-project-board-commands.sh",
   "gh repo edit ontos-protocol/ontos-protocol --visibility public"
 ]) {
