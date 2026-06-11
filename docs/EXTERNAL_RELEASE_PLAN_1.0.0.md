@@ -154,7 +154,7 @@ npm run release:vscode-vsix
 Publish to Open VSX for Cursor, VSCodium, and other Open VSX clients:
 
 ```bash
-npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix --publisher ontos-protocol
+npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix --skip-duplicate
 ```
 
 Publish the same VSIX to Visual Studio Marketplace when the Marketplace

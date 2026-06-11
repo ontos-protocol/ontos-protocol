@@ -5,6 +5,17 @@ All notable changes to `.ontos Protocol` are documented here.
 The project follows semantic versioning for packages and the compatibility
 policy documented in `docs/COMPATIBILITY_POLICY.md`.
 
+## 1.0.2 - Unreleased
+
+### Changed
+
+- Added external marketplace verification for the VS Code-compatible extension
+  across Visual Studio Marketplace, Open VSX, and GitHub Releases.
+- Updated extension patch release guidance so maintainers publish the same VSIX
+  to Open VSX, Visual Studio Marketplace, and GitHub Releases.
+- Recorded Open VSX publication and namespace verification evidence for the
+  1.0 launch.
+
 ## 1.0.0 - 2026-06-05
 
 First stable open-source release.

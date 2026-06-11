@@ -1,19 +1,19 @@
 # VS Code Extension Publishing
 
 This runbook defines how to build, verify, and publish the `.ontos Protocol`
-VS Code-compatible extension for 1.0.0.
+VS Code-compatible extension.
 
 ## Package Identity
 
 - Extension package: `ontos-protocol-vscode`
 - Display name: `.ontos Protocol`
 - Publisher: `ontos-protocol`
-- Version: `1.0.0`
-- VSIX artifact: `.release/ontos-protocol-vscode-1.0.0.vsix`
+- Version: read from `extensions/vscode/package.json`
+- VSIX artifact: `.release/ontos-protocol-vscode-<version>.vsix`
 - Source package: `extensions/vscode/package.json`
 
-The extension version must stay aligned with the monorepo release tag
-`v1.0.0`.
+For extension-only patches, the extension version may move ahead of the npm
+package version. The GitHub release tag must match the VSIX version.
 
 ## Build VSIX
 
@@ -25,10 +25,10 @@ npm run build
 npm run release:vscode-vsix
 ```
 
-Expected output:
+Expected output for version `1.0.1`:
 
 ```text
-.release/ontos-protocol-vscode-1.0.0.vsix
+.release/ontos-protocol-vscode-1.0.1.vsix
 ```
 
 `npm run release:archives` also includes the VSIX in `.release/SHA256SUMS`.
@@ -36,7 +36,7 @@ Expected output:
 Verify the VSIX exists and is checksummed:
 
 ```bash
-test -f .release/ontos-protocol-vscode-1.0.0.vsix
+test -f .release/ontos-protocol-vscode-1.0.1.vsix
 npm run validate:release-archives
 ```
 
@@ -45,7 +45,7 @@ npm run validate:release-archives
 For VS Code:
 
 ```bash
-code --install-extension .release/ontos-protocol-vscode-1.0.0.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.1.vsix
 ```
 
 For Cursor, use the Extensions view command menu and install the same VSIX from
@@ -66,14 +66,15 @@ Open VSX clients.
 
 Preconditions:
 
-- publisher `ontos-protocol` exists in Open VSX
+- namespace `ontos-protocol` exists in Open VSX
+- namespace `ontos-protocol` is verified or a claim issue has been filed
 - release owner has an Open VSX access token
-- `npm run release:vscode-vsix` has produced the 1.0.0 VSIX
+- `npm run release:vscode-vsix` has produced the VSIX for the manifest version
 
 Publish:
 
 ```bash
-npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix --publisher ontos-protocol
+npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.1.vsix --skip-duplicate
 ```
 
 Expected public URL after publication:
@@ -90,9 +91,15 @@ Verify in Cursor:
 4. Open a `.ontos` file.
 5. Confirm the main editor tab is `.ontos Tree`.
 
+Verify public metadata:
+
+```bash
+npm run verify:extension-marketplaces
+```
+
 ## Visual Studio Marketplace
 
-Marketplace publishing is recommended for the same 1.0.0 release so stock
+Marketplace publishing is recommended for the same extension version so stock
 VS Code users can install without a VSIX file.
 
 Preconditions:
@@ -104,7 +111,7 @@ Preconditions:
 Publish:
 
 ```bash
-npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.0.vsix
+npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.1.vsix
 ```
 
 Expected public URL after publication:
@@ -119,7 +126,7 @@ Publish order:
 
 1. Run `npm run release:check`.
 2. Publish npm packages using [npm Publishing Runbook](NPM_PUBLISHING.md).
-3. Build `.release/ontos-protocol-vscode-1.0.0.vsix`.
+3. Build `.release/ontos-protocol-vscode-<version>.vsix`.
 4. Publish the VSIX to Open VSX.
 5. Publish the same VSIX to Visual Studio Marketplace.
 6. Attach the VSIX and `.release/SHA256SUMS` to the GitHub release.

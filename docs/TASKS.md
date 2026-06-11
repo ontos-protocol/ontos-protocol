@@ -1070,7 +1070,7 @@ Release requirements:
 - [x] Packaging test.
 - [x] Local install test.
 - [x] VSIX build script.
-- [ ] Open VSX publication evidence.
+- [x] Open VSX publication evidence.
 - [x] Visual Studio Marketplace publication evidence.
 
 Definition of done:

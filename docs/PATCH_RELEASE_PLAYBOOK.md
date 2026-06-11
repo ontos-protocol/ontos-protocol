@@ -41,8 +41,24 @@ Before approving a patch:
 5. Update release notes or known issue notes.
 6. Run `npm run release:check`.
 7. Publish patch packages in dependency order if packages changed.
-8. Publish a GitHub patch release.
-9. Reply to affected issues with verification steps.
+8. For VS Code-compatible extension patches, publish the same VSIX to both
+   Open VSX and Visual Studio Marketplace.
+9. Publish a GitHub patch release and attach the VSIX plus `SHA256SUMS`.
+10. Reply to affected issues with verification steps.
+
+## Extension Patch Matrix
+
+When only `extensions/vscode` changes:
+
+- bump `extensions/vscode/package.json`
+- rebuild `.release/ontos-protocol-vscode-<version>.vsix`
+- publish the VSIX to Visual Studio Marketplace
+- publish the same VSIX to Open VSX
+- create a GitHub release `v<version>` with the VSIX and checksums
+- run `npm run verify:extension-marketplaces`
+
+Do not publish npm packages for an extension-only patch unless parser, schema,
+viewer, or CLI package contents changed.
 
 ## Patch Verification
 
@@ -50,6 +66,12 @@ Run:
 
 ```bash
 npm run release:check
+```
+
+For extension marketplace verification, run:
+
+```bash
+npm run verify:extension-marketplaces
 ```
 
 After publishing packages, run:

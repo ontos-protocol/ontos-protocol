@@ -78,6 +78,7 @@
     "validate:github-community": "node scripts/validate-github-community.mjs",
     "validate:release-approval": "node scripts/validate-release-approval.mjs",
     "validate:release-approval-final": "node scripts/validate-release-approval.mjs --final",
+    "verify:extension-marketplaces": "node scripts/verify-extension-marketplaces.mjs",
     "package:smoke": "node scripts/package-smoke.mjs",
     "postpublish:smoke": "node scripts/post-publish-smoke.mjs",
     "publish:dry-run": "node scripts/publish-dry-run.mjs",

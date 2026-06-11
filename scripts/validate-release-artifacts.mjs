@@ -143,7 +143,7 @@ for (const token of [
   "npm run validate:launch-content",
   "npm publish --access public -w @ontos-protocol/cli",
   "npm run release:vscode-vsix",
-  `ovsx@1.0.0 publish ${vscodeVsixPath}`,
+  `ovsx@1.0.0 publish ${vscodeVsixPath} --skip-duplicate`,
   `@vscode/vsce@3.9.2 publish --packagePath ${vscodeVsixPath}`,
   "gh release upload v1.0.0",
   vscodeVsixPath,

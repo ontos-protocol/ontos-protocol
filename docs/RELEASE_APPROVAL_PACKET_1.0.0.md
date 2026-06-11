@@ -56,7 +56,8 @@ Record links or command output after external launch actions are complete:
 - [x] GitHub release URL: https://github.com/ontos-protocol/ontos-protocol/releases/tag/v1.0.0
 - [x] Documentation site URL: https://ontos-protocol.github.io/ontos-protocol/
 - [x] Hosted viewer demo URL: https://ontos-protocol.github.io/ontos-protocol/#demo
-- [ ] Open VSX extension URL:
+- [x] Open VSX extension URL: https://open-vsx.org/extension/ontos-protocol/ontos-protocol-vscode
+  Evidence: Open VSX published `.ontos Protocol` version `1.0.1` on 2026-06-09; `ovsx get ontos-protocol.ontos-protocol-vscode --metadata` returned `downloadable: true`, `verified: true`, and `unrelatedPublisher: false` on 2026-06-12. Namespace claim https://github.com/EclipseFdn/open-vsx.org/issues/10965 was closed with label `granted`.
 - [x] Visual Studio Marketplace extension URL: https://marketplace.visualstudio.com/items?itemName=ontos-protocol.ontos-protocol-vscode
   Evidence: `vsce show ontos-protocol.ontos-protocol-vscode --json` returned `.ontos Protocol` version `1.0.0` on 2026-06-07; Marketplace item page returned HTTP 200 and VSIX SHA256 `6870ed152054670bd512713bf896cc956912ef57ba258e96b7492619c8dddaf1`.
 - [x] Launch article URL: https://github.com/ontos-protocol/ontos-protocol/discussions/6

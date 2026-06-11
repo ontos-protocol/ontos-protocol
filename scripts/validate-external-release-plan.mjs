@@ -87,7 +87,7 @@ for (const required of [
   "gh release create v1.0.0",
   "npm run demo:video",
   "npm run validate:demo-video",
-  "npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix",
+  "npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.0.vsix --skip-duplicate",
   "npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.0.vsix",
   ".release/ontos-protocol-60s-demo.mp4",
   "gh workflow run deploy-docs.yml",

@@ -96,13 +96,13 @@ Use one of these paths before asking an AI agent to work from `.ontos` files:
 
 1. Extension marketplace:
    Search for `.ontos Protocol` in Open VSX, Cursor, VSCodium, or Visual Studio
-   Marketplace after the 1.0.0 extension is published. The installed extension
+   Marketplace after the extension is published. The installed extension
    should open `.ontos` files in the `.ontos Tree` custom editor by default.
 
 2. Local VSIX:
 
    ```bash
-   code --install-extension .release/ontos-protocol-vscode-1.0.0.vsix
+   code --install-extension .release/ontos-protocol-vscode-1.0.1.vsix
    ```
 
    In Cursor, install the same VSIX from the Extensions view command menu when
