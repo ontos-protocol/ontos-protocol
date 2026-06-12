@@ -12,7 +12,7 @@ VSIX locally:
 
 ```bash
 npm run release:vscode-vsix
-code --install-extension .release/ontos-protocol-vscode-1.0.2.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.3.vsix
 ```
 
 See the repository-level

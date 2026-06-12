@@ -16,7 +16,7 @@ assertEqual(manifest.contributes.configuration.properties["ontos.indentGuides"].
 assertEqual(manifest.contributes.configuration.properties["ontos.depthBands"].default, false, "depth bands default");
 assertEqual(manifest.contributes.configuration.properties["ontos.textFolding"].default, false, "text folding default");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.guides.indentation"], true, "ontos indentation guides");
-assertEqual(manifest.version, "1.0.2", "version");
+assertEqual(manifest.version, "1.0.3", "version");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never", "ontos folding controls");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.folding"], false, "ontos text folding");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.foldingHighlight"], false, "ontos folding highlight");
@@ -69,6 +69,8 @@ for (const command of [
   "ontos.convertMarkdown",
   "ontos.openAsText",
   "ontos.openAsTree",
+  "ontos.openWorkspaceTree",
+  "ontos.openInCursorPanel",
   "ontos.revealNode",
   "ontos.focusTree",
   "ontos.refreshTree"
@@ -94,6 +96,10 @@ for (const required of [
   "openAsTextEditor",
   "migrateOpenOntosTextTabs",
   "promoteToTreeViewer",
+  "resolveOntosUri",
+  "openInCursorPanelOrTree",
+  "glass.openFileInStableTab",
+  "path: uri.fsPath",
   "isOntosDocument",
   "registerIndentDecorations",
   "createTextEditorDecorationType",

@@ -231,8 +231,8 @@ export function activate(context) {
     vscode.commands.registerCommand("ontos.handoffPack", () => copyPack("handoff")),
     vscode.commands.registerCommand("ontos.modifyBoundaryPack", () => copyPack("modify-boundary")),
     vscode.commands.registerCommand("ontos.verificationPack", () => copyPack("verification")),
-    vscode.commands.registerCommand("ontos.preview", () => {
-      const document = activeOntosDocument();
+    vscode.commands.registerCommand("ontos.preview", async (target) => {
+      const document = await resolveOntosDocument(target);
       if (document) {
         openOrUpdatePreview(context, document);
       }
@@ -240,16 +240,28 @@ export function activate(context) {
     vscode.commands.registerCommand("ontos.convertMarkdown", async () => {
       await convertActiveMarkdown();
     }),
-    vscode.commands.registerCommand("ontos.openAsText", async () => {
-      const document = activeOntosDocument();
-      if (document) {
-        await openAsTextEditor(document.uri);
+    vscode.commands.registerCommand("ontos.openAsText", async (target) => {
+      const uri = await resolveOntosUri(target);
+      if (uri) {
+        await openAsTextEditor(uri);
       }
     }),
-    vscode.commands.registerCommand("ontos.openAsTree", async () => {
-      const document = activeOntosDocument();
-      if (document) {
-        await promoteToTreeViewer(document.uri, { force: true });
+    vscode.commands.registerCommand("ontos.openAsTree", async (target) => {
+      const uri = await resolveOntosUri(target);
+      if (uri) {
+        await promoteToTreeViewer(uri, { force: true });
+      }
+    }),
+    vscode.commands.registerCommand("ontos.openWorkspaceTree", async (target) => {
+      const uri = await resolveOntosUri(target, { preferWorkspace: true });
+      if (uri) {
+        await promoteToTreeViewer(uri, { force: true });
+      }
+    }),
+    vscode.commands.registerCommand("ontos.openInCursorPanel", async (target) => {
+      const uri = await resolveOntosUri(target, { preferWorkspace: true });
+      if (uri) {
+        await openInCursorPanelOrTree(uri);
       }
     }),
     vscode.commands.registerCommand("ontos.revealNode", async (args) => {
@@ -501,10 +513,59 @@ async function convertActiveMarkdown() {
   );
 }
 
-function activeOntosDocument(showWarning = true) {
+async function resolveOntosDocument(target, options = {}) {
+  const uri = await resolveOntosUri(target, options);
+  if (!uri) {
+    return undefined;
+  }
+  try {
+    return await vscode.workspace.openTextDocument(uri);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    vscode.window.showWarningMessage(`Unable to open .ontos document: ${message}`);
+    return undefined;
+  }
+}
+
+async function resolveOntosUri(target, options = {}) {
+  const explicit = ontosUriFromCommandTarget(target);
+  if (explicit) {
+    return explicit;
+  }
+
+  if (!options.preferWorkspace) {
+    const active = activeOntosUri();
+    if (active) {
+      return active;
+    }
+
+    const openUri = singleOntosUri([
+      ...openOntosTabUris(),
+      ...vscode.workspace.textDocuments.filter(isOntosDocument).map((document) => document.uri)
+    ]);
+    if (openUri) {
+      return openUri;
+    }
+  }
+
+  const workspaceUri = await workspaceOntosUri();
+  if (workspaceUri) {
+    return workspaceUri;
+  }
+
+  const active = activeOntosUri();
+  if (active) {
+    return active;
+  }
+
+  vscode.window.showWarningMessage("Open a .ontos document first.");
+  return undefined;
+}
+
+function activeOntosUri() {
   const editorDocument = vscode.window.activeTextEditor?.document;
   if (isOntosDocument(editorDocument)) {
-    return editorDocument;
+    return editorDocument.uri;
   }
 
   const tab = vscode.window.tabGroups.activeTabGroup.activeTab;
@@ -516,6 +577,15 @@ function activeOntosDocument(showWarning = true) {
       : undefined;
 
   if (uri?.fsPath?.endsWith(".ontos")) {
+    return uri;
+  }
+
+  return undefined;
+}
+
+function activeOntosDocument(showWarning = true) {
+  const uri = activeOntosUri();
+  if (uri) {
     const document = vscode.workspace.textDocuments.find((item) => item.uri.toString() === uri.toString());
     if (document?.languageId === "ontos" || document?.uri.fsPath.endsWith(".ontos")) {
       return document;
@@ -528,11 +598,139 @@ function activeOntosDocument(showWarning = true) {
   return undefined;
 }
 
+function ontosUriFromCommandTarget(target) {
+  const candidate = Array.isArray(target) ? target[0] : target;
+  if (!candidate) {
+    return undefined;
+  }
+  if (candidate instanceof vscode.Uri) {
+    return isOntosUri(candidate) ? candidate : undefined;
+  }
+  if (typeof candidate === "string") {
+    return uriFromPathLike(candidate);
+  }
+  if (candidate.resourceUri instanceof vscode.Uri) {
+    return isOntosUri(candidate.resourceUri) ? candidate.resourceUri : undefined;
+  }
+  if (candidate.uri instanceof vscode.Uri) {
+    return isOntosUri(candidate.uri) ? candidate.uri : undefined;
+  }
+  for (const key of ["path", "fsPath"]) {
+    const value = candidate[key];
+    if (typeof value === "string") {
+      const uri = uriFromPathLike(value);
+      if (uri) {
+        return uri;
+      }
+    }
+  }
+  if (candidate.uri && typeof candidate.uri === "object") {
+    return ontosUriFromCommandTarget(candidate.uri);
+  }
+  return undefined;
+}
+
+function uriFromPathLike(value) {
+  const uri = value.startsWith("file:")
+    ? vscode.Uri.parse(value)
+    : vscode.Uri.file(value);
+  return isOntosUri(uri) ? uri : undefined;
+}
+
+function openOntosTabUris() {
+  const uris = [];
+  for (const group of vscode.window.tabGroups.all) {
+    for (const tab of group.tabs) {
+      const input = tab.input;
+      const uri = input instanceof vscode.TabInputCustom && input.viewType === "ontos.nativeViewer"
+        ? input.uri
+        : input instanceof vscode.TabInputText
+          ? input.uri
+          : undefined;
+      if (isOntosUri(uri)) {
+        uris.push(uri);
+      }
+    }
+  }
+  return uris;
+}
+
+function singleOntosUri(uris) {
+  const byKey = new Map();
+  for (const uri of uris) {
+    if (isOntosUri(uri)) {
+      byKey.set(uri.toString(), uri);
+    }
+  }
+  return byKey.size === 1 ? byKey.values().next().value : undefined;
+}
+
+async function workspaceOntosUri() {
+  if (!vscode.workspace.workspaceFolders?.length) {
+    return undefined;
+  }
+  const files = await vscode.workspace.findFiles("**/*.ontos", "{**/node_modules/**,**/.git/**}", 20);
+  if (files.length === 1) {
+    return files[0];
+  }
+  if (files.length > 1) {
+    const picked = await vscode.window.showQuickPick(
+      files.map((uri) => ({
+        label: vscode.workspace.asRelativePath(uri),
+        uri
+      })),
+      { placeHolder: "Choose a .ontos document to open as a tree." }
+    );
+    return picked?.uri;
+  }
+  return undefined;
+}
+
+async function openInCursorPanelOrTree(uri) {
+  const commands = await vscode.commands.getCommands(true);
+  await executeIfAvailable(commands, "glass.enterEditorPanelFullscreen");
+  await executeIfAvailable(commands, "glass.openFilesTab");
+
+  if (commands.includes("glass.openFileInStableTab")) {
+    try {
+      await vscode.commands.executeCommand("glass.openFileInStableTab", {
+        path: uri.fsPath,
+        openEditorPanelFullscreen: true,
+        editorType: "ontos.nativeViewer",
+        viewType: "ontos.nativeViewer"
+      });
+      await delay(250);
+    } catch {
+      // Cursor's Glass commands are private APIs and can change shape. Fall back to the
+      // standard VS Code custom editor path if the panel command rejects our payload.
+    }
+  }
+
+  await promoteToTreeViewer(uri, { force: true });
+}
+
+async function executeIfAvailable(commands, command) {
+  if (!commands.includes(command)) {
+    return false;
+  }
+  await vscode.commands.executeCommand(command);
+  await delay(120);
+  return true;
+}
+
+async function delay(ms) {
+  await new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function isOntosDocument(document) {
   return Boolean(document && (
     document.languageId === "ontos" ||
     document.uri?.fsPath?.toLowerCase().endsWith(".ontos")
   ));
+}
+
+function isOntosUri(uri) {
+  return uri?.fsPath?.toLowerCase().endsWith(".ontos") === true;
 }
 
 function nodeAtCursor(document, line) {

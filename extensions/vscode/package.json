@@ -2,7 +2,7 @@
   "name": "ontos-protocol-vscode",
   "displayName": ".ontos Protocol",
   "description": "VS Code language support for .ontos Protocol files.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "ontos-protocol",
   "license": "MIT",
   "repository": {
@@ -50,6 +50,8 @@
     "onCommand:ontos.convertMarkdown",
     "onCommand:ontos.openAsText",
     "onCommand:ontos.openAsTree",
+    "onCommand:ontos.openWorkspaceTree",
+    "onCommand:ontos.openInCursorPanel",
     "onCommand:ontos.focusTree",
     "onCommand:ontos.refreshTree",
     "onView:ontosNodeTree",
@@ -195,6 +197,14 @@
       {
         "command": "ontos.openAsTree",
         "title": ".ontos: Open as Tree"
+      },
+      {
+        "command": "ontos.openWorkspaceTree",
+        "title": ".ontos: Open Workspace File as Tree"
+      },
+      {
+        "command": "ontos.openInCursorPanel",
+        "title": ".ontos: Open in Cursor Panel"
       },
       {
         "command": "ontos.focusTree",

@@ -5,6 +5,19 @@ All notable changes to `.ontos Protocol` are documented here.
 The project follows semantic versioning for packages and the compatibility
 policy documented in `docs/COMPATIBILITY_POLICY.md`.
 
+## 1.0.3 - 2026-06-13
+
+### Fixed
+
+- Made `.ontos: Open as Tree` resolve explicit command arguments, active
+  custom/text tabs, open `.ontos` documents, and single-file workspaces so
+  Cursor/agent-triggered commands no longer no-op when the active editor is not
+  the target document.
+- Added `.ontos: Open Workspace File as Tree` and `.ontos: Open in Cursor Panel`
+  for reliable Cursor command palette and right-panel workflows.
+- Updated the Cursor panel path to use `path: uri.fsPath` with Cursor's private
+  Glass command shape before falling back to the standard custom editor.
+
 ## 1.0.2 - 2026-06-12
 
 ### Fixed

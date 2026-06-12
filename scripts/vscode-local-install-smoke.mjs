@@ -23,7 +23,7 @@ try {
 
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
   assert.equal(manifest.main, "./dist/extension.js");
-  assert.equal(manifest.version, "1.0.2");
+  assert.equal(manifest.version, "1.0.3");
   assert.equal(manifest.contributes.customEditors[0].viewType, "ontos.nativeViewer");
   assert.equal(manifest.configurationDefaults["workbench.editorAssociations"]["*.ontos"], "ontos.nativeViewer");
   assert.equal(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never");
