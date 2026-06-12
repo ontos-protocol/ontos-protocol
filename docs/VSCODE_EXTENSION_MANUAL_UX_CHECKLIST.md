@@ -9,14 +9,16 @@ artifact that will be published.
 |---|---|---|
 | 1 | Open `examples/project-state.ontos` in an extension development host. | Main tab is `.ontos Tree`, not a plain text editor. |
 | 2 | Click a node disclosure control. | Child nodes collapse and expand. |
-| 3 | Click `Edit` on a node. | A text editor opens beside the tree and reveals the source line. |
-| 4 | Close the text editor and leave only the tree tab open, then run `.ontos: Validate Document`. | Validation runs against the active `.ontos` document. |
-| 5 | Run `.ontos: Open as Text`. | The text editor opens and the tree does not immediately take focus back. |
-| 6 | Run `.ontos: Open as Tree`. | The document returns to `.ontos Tree`. |
-| 7 | Confirm `ontos.autoPreview` is `false`, then open a `.ontos` file. | No side Web Preview opens automatically. |
-| 8 | Click a node in the Node Tree side view. | The main tree highlights or scrolls to the same node. |
-| 9 | Use `.ontos: Copy Node Path` on a node without `@id(...)`. | Clipboard contains the node path. |
-| 10 | Open a Markdown file and run `.ontos: Convert Markdown to .ontos`. | A new `.ontos` document opens and validates. |
+| 3 | Confirm the Node Tree side view is visible. | The side view is a navigation tree, not a second full `.ontos Tree` editor. |
+| 4 | Click and collapse nodes in the main `.ontos Tree`. | No duplicate editor or side preview opens. |
+| 5 | Click `Edit` on a node. | A text editor opens beside the tree and reveals the source line. |
+| 6 | Close the text editor and leave only the tree tab open, then run `.ontos: Validate Document`. | Validation runs against the active `.ontos` document. |
+| 7 | Run `.ontos: Open as Text`. | The text editor opens and the tree does not immediately take focus back. |
+| 8 | Run `.ontos: Open as Tree`. | The document returns to `.ontos Tree`. |
+| 9 | Set `ontos.autoPreview` to `true` while `ontos.defaultEditor` is `tree`, then reopen a `.ontos` file. | Only one main `.ontos Tree` editor opens; no duplicate side preview opens automatically. |
+| 10 | Click a node in the Node Tree side view. | The main tree highlights or scrolls to the same node. |
+| 11 | Use `.ontos: Copy Node Path` on a node without `@id(...)`. | Clipboard contains the node path. |
+| 12 | Open a Markdown file and run `.ontos: Convert Markdown to .ontos`. | A new `.ontos` document opens and validates. |
 
 ## Evidence
 

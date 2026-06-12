@@ -145,8 +145,8 @@ User opens `.ontos` in VS Code or Obsidian.
 VS Code and Cursor use three UI layers:
 
 1. default main-tab `.ontos Tree` custom editor
-2. optional Node Tree side view
-3. optional side Web Preview
+2. default companion Node Tree side view
+3. optional side Web Preview for explicit text-mode review
 
 Success:
 
@@ -154,8 +154,9 @@ Success:
 - nodes collapse and expand without using the text gutter
 - text editing remains available through Open as Text
 - tree nodes can reveal the corresponding source line
-- optional side node tree is available without becoming the default view
-- optional side preview stays off unless requested
+- companion Node Tree is available without opening a second copy of the document
+- optional side preview stays off unless requested, and never duplicates the
+  default main tree editor
 - node path, node text, and AI pack commands work from the tree tab focus,
   Node Tree selection, or text cursor
 - node path and node text commands work before every node has a stable ID

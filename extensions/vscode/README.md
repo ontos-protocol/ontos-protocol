@@ -12,7 +12,7 @@ VSIX locally:
 
 ```bash
 npm run release:vscode-vsix
-code --install-extension .release/ontos-protocol-vscode-1.0.3.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.4.vsix
 ```
 
 See the repository-level
@@ -62,27 +62,29 @@ plain-text-only workflow.
 UI layers:
 
 1. Default: `.ontos Tree` custom editor in the main editor tab.
-2. Optional: Node Tree side view, controlled by `ontos.focusSidebarOnOpen`.
-3. Optional: side Web Preview, controlled by `ontos.autoPreview` or the preview
-   command.
+2. Default companion: Node Tree side view, controlled by `ontos.focusSidebarOnOpen`.
+3. Optional: side Web Preview, controlled by the preview command. Automatic
+   side preview is only for explicit text-mode workflows.
 
 Settings:
 
 - `ontos.defaultEditor`: `tree` by default, or `text` for plain text opening
-- `ontos.autoPreview`: disabled by default; opens the optional side preview
-- `ontos.focusSidebarOnOpen`: disabled by default; focuses the Node Tree side view
+- `ontos.autoPreview`: disabled by default; only auto-opens the optional side
+  preview when `ontos.defaultEditor` is `text`
+- `ontos.focusSidebarOnOpen`: enabled by default; opens the companion Node Tree
+  side view once per `.ontos` document
 - `ontos.indentGuides`: enabled by default for plain text mode
 - `ontos.depthBands`: disabled by default; adds subtle nesting bands in plain text mode
 - `ontos.textFolding`: disabled by default; enables native text-editor folding
   only for users who explicitly prefer it
 
-The default experience is the tree custom editor. Use Open as Text when editing
-source lines directly. Text mode suppresses VS Code's native folding gutter for
-`.ontos` files so users do not see a second set of left-edge disclosure
-controls competing with the tree editor. If Cursor restores a `.ontos` text tab
-from an older session, the extension migrates it back into `.ontos Tree` unless
-`ontos.defaultEditor` is set to `text` or the current session used `.ontos: Open
-as Text`.
+The default experience is one main tree custom editor plus the companion Node
+Tree side view. Use Open as Text when editing source lines directly. Text mode
+suppresses VS Code's native folding gutter for `.ontos` files so users do not
+see a second set of left-edge disclosure controls competing with the tree
+editor. If Cursor restores a `.ontos` text tab from an older session, the
+extension migrates it back into `.ontos Tree` unless `ontos.defaultEditor` is
+set to `text` or the current session used `.ontos: Open as Text`.
 
 Local development smoke check:
 

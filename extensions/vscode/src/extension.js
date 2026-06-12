@@ -21,6 +21,7 @@ import {
   nodeInfoAtLine
 } from "./extensionLogic.js";
 import {
+  hasTreeViewerTab,
   openAsTextEditor,
   migrateOpenOntosTextTabs,
   promoteToTreeViewer,
@@ -50,6 +51,7 @@ export function activate(context) {
   const diagnostics = vscode.languages.createDiagnosticCollection("ontos");
   const indentDecorations = registerIndentDecorations(context);
   const focusedNodeByUri = new Map();
+  const sidebarOpenedForUri = new Set();
   let selectedTreeNode;
   const treeProvider = new OntosTreeProvider();
   const nativeEditor = new OntosNativeEditorProvider({
@@ -94,10 +96,16 @@ export function activate(context) {
     }
     treeProvider.refresh(activeDocument);
     const config = vscode.workspace.getConfiguration("ontos");
-    if (config.get("focusSidebarOnOpen", false)) {
+    const uriKey = activeDocument.uri.toString();
+    if (config.get("focusSidebarOnOpen", true) && !sidebarOpenedForUri.has(uriKey)) {
+      sidebarOpenedForUri.add(uriKey);
       void vscode.commands.executeCommand("workbench.view.extension.ontos");
     }
-    if (config.get("autoPreview", false)) {
+    if (
+      config.get("autoPreview", false) &&
+      config.get("defaultEditor", "tree") === "text" &&
+      !hasTreeViewerTab(activeDocument.uri)
+    ) {
       openOrUpdatePreview(context, activeDocument);
     }
   };

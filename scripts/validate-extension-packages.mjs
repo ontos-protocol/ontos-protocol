@@ -58,7 +58,7 @@ function validateVsCodePackage() {
   }
 
   const manifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
-  if (manifest.version !== "1.0.3" || manifest.publisher !== "ontos-protocol") {
+  if (manifest.version !== "1.0.4" || manifest.publisher !== "ontos-protocol") {
     throw new Error("VS Code package metadata is not ready for release.");
   }
   if (manifest.main !== "./dist/extension.js") {
@@ -66,6 +66,9 @@ function validateVsCodePackage() {
   }
   if (manifest.contributes.customEditors?.[0]?.viewType !== "ontos.nativeViewer") {
     throw new Error("VS Code package must declare the default .ontos tree custom editor.");
+  }
+  if (manifest.contributes.configuration?.properties?.["ontos.focusSidebarOnOpen"]?.default !== true) {
+    throw new Error("VS Code package must open the companion Node Tree side view by default.");
   }
   if (manifest.configurationDefaults?.["workbench.editorAssociations"]?.["*.ontos"] !== "ontos.nativeViewer") {
     throw new Error("VS Code package must associate .ontos files with the tree custom editor.");
@@ -95,6 +98,9 @@ function validateVsCodePackage() {
     "TREE_TEXT_TAB_MIGRATION_VERSION",
     "glass.openFileInStableTab",
     "path: uri.fsPath",
+    "sidebarOpenedForUri",
+    "hasTreeViewerTab",
+    "defaultEditor",
     "field-toggle",
     "Search nodes and fields",
     "isOntosDocument"

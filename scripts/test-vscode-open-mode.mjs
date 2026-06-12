@@ -4,7 +4,7 @@ import {
   shouldPromoteOntosTextTab
 } from "../extensions/vscode/src/openModeLogic.js";
 
-assert.equal(TREE_TEXT_TAB_MIGRATION_VERSION, "1.0.3");
+assert.equal(TREE_TEXT_TAB_MIGRATION_VERSION, "1.0.4");
 
 assert.equal(shouldPromoteOntosTextTab({
   isOntosTextTab: true,

@@ -2,7 +2,7 @@
   "name": "ontos-protocol-vscode",
   "displayName": ".ontos Protocol",
   "description": "VS Code language support for .ontos Protocol files.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "ontos-protocol",
   "license": "MIT",
   "repository": {
@@ -240,12 +240,12 @@
         "ontos.autoPreview": {
           "type": "boolean",
           "default": false,
-          "description": "Open the optional side tree preview when a .ontos document is active."
+          "description": "Open the optional side tree preview for text-mode .ontos workflows. The main tree editor never auto-opens a duplicate preview."
         },
         "ontos.focusSidebarOnOpen": {
           "type": "boolean",
-          "default": false,
-          "description": "Focus the optional Node Tree side view when a .ontos document is active."
+          "default": true,
+          "description": "Open the companion Node Tree side view once when a .ontos document is first opened."
         },
         "ontos.indentGuides": {
           "type": "boolean",

@@ -15,8 +15,9 @@ assertEqual(manifest.configurationDefaults["workbench.editorAssociations"]["*.on
 assertEqual(manifest.contributes.configuration.properties["ontos.indentGuides"].default, true, "indent guides default");
 assertEqual(manifest.contributes.configuration.properties["ontos.depthBands"].default, false, "depth bands default");
 assertEqual(manifest.contributes.configuration.properties["ontos.textFolding"].default, false, "text folding default");
+assertEqual(manifest.contributes.configuration.properties["ontos.focusSidebarOnOpen"].default, true, "node tree side view default");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.guides.indentation"], true, "ontos indentation guides");
-assertEqual(manifest.version, "1.0.3", "version");
+assertEqual(manifest.version, "1.0.4", "version");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never", "ontos folding controls");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.folding"], false, "ontos text folding");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.foldingHighlight"], false, "ontos folding highlight");
@@ -100,6 +101,9 @@ for (const required of [
   "openInCursorPanelOrTree",
   "glass.openFileInStableTab",
   "path: uri.fsPath",
+  "sidebarOpenedForUri",
+  "hasTreeViewerTab",
+  "config.get(\"defaultEditor\", \"tree\") === \"text\"",
   "isOntosDocument",
   "registerIndentDecorations",
   "createTextEditorDecorationType",

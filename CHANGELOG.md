@@ -5,6 +5,21 @@ All notable changes to `.ontos Protocol` are documented here.
 The project follows semantic versioning for packages and the compatibility
 policy documented in `docs/COMPATIBILITY_POLICY.md`.
 
+## 1.0.4 - 2026-06-13
+
+### Fixed
+
+- Kept the default Cursor/VS Code experience to a single main `.ontos Tree`
+  editor by preventing `ontos.autoPreview` from opening a duplicate side tree
+  when the tree custom editor is already the active default.
+- Kept the companion `Node Tree` side view enabled by default, while opening it
+  only once per document so node navigation does not keep stealing focus.
+- Scoped automatic side preview to explicit text-mode workflows so users who
+  prefer plain text can still opt into a synchronized preview without affecting
+  node-first users.
+- Updated extension package validation to require the duplicate-preview guard
+  in the bundled VSIX before publication.
+
 ## 1.0.3 - 2026-06-13
 
 ### Fixed
