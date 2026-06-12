@@ -1,7 +1,12 @@
 import * as vscode from "vscode";
+import {
+  TREE_TEXT_TAB_MIGRATION_VERSION,
+  shouldPromoteOntosTextTab
+} from "./openModeLogic.js";
 
 const pendingTreeOpen = new Set();
 const textModeBypass = new Map();
+const migrationStateKey = "ontos.treeTextTabMigrationVersion";
 
 export function hasTreeViewerTab(uri) {
   const key = uri.toString();
@@ -27,6 +32,9 @@ export function schedulePromoteToTreeViewer(uri) {
 
 export async function promoteToTreeViewer(uri, options = {}) {
   const key = uri.toString();
+  if (options.force) {
+    clearTreePromotionSuppression(uri);
+  }
   if (pendingTreeOpen.has(key) || (!options.force && hasTextModeBypass(uri))) {
     return;
   }
@@ -45,7 +53,10 @@ export async function promoteToTreeViewer(uri, options = {}) {
       "vscode.openWith",
       uri,
       "ontos.nativeViewer",
-      { viewColumn: vscode.ViewColumn.Active, preserveFocus: false }
+      {
+        viewColumn: options.viewColumn ?? vscode.ViewColumn.Active,
+        preserveFocus: false
+      }
     );
     await closeTextTabsForUri(uri);
   } catch (error) {
@@ -57,7 +68,7 @@ export async function promoteToTreeViewer(uri, options = {}) {
 }
 
 export async function openAsTextEditor(uri) {
-  suppressTreePromotion(uri);
+  suppressTreePromotion(uri, Number.POSITIVE_INFINITY);
   await vscode.commands.executeCommand("vscode.openWith", uri, "default", {
     viewColumn: vscode.ViewColumn.Active,
     preserveFocus: false
@@ -67,6 +78,48 @@ export async function openAsTextEditor(uri) {
 export function suppressTreePromotion(uri, durationMs = 1500) {
   const key = uri.toString();
   textModeBypass.set(key, Date.now() + durationMs);
+}
+
+export function clearTreePromotionSuppression(uri) {
+  textModeBypass.delete(uri.toString());
+}
+
+export async function migrateOpenOntosTextTabs(context) {
+  await context?.globalState?.update?.(migrationStateKey, TREE_TEXT_TAB_MIGRATION_VERSION);
+  const config = vscode.workspace.getConfiguration("ontos");
+  const defaultEditor = config.get("defaultEditor", "tree");
+  const migrations = [];
+  const seen = new Set();
+
+  for (const group of vscode.window.tabGroups.all) {
+    for (const tab of group.tabs) {
+      const uri = tab.input instanceof vscode.TabInputText ? tab.input.uri : undefined;
+      const key = uri?.toString();
+      if (!uri || !key || seen.has(key)) {
+        continue;
+      }
+      const isOntosTextTab = isOntosUri(uri);
+      const hasBypass = hasTextModeBypass(uri);
+      const hasTreeTab = hasTreeViewerTab(uri);
+      if (isOntosTextTab && defaultEditor !== "text" && !hasBypass && hasTreeTab) {
+        seen.add(key);
+        migrations.push(closeTextTabsForUri(uri));
+        continue;
+      }
+      if (shouldPromoteOntosTextTab({
+        isOntosTextTab,
+        defaultEditor,
+        hasTreeViewerTab: hasTreeTab,
+        hasTextModeBypass: hasBypass
+      })) {
+        seen.add(key);
+        migrations.push(promoteToTreeViewer(uri, { viewColumn: group.viewColumn }));
+      }
+    }
+  }
+
+  await Promise.all(migrations);
+  return migrations.length;
 }
 
 function hasTextModeBypass(uri) {
@@ -95,4 +148,8 @@ async function closeTextTabsForUri(uri) {
   if (tabs.length > 0) {
     await vscode.window.tabGroups.close(tabs);
   }
+}
+
+function isOntosUri(uri) {
+  return uri?.fsPath?.toLowerCase().endsWith(".ontos") === true;
 }

@@ -12,7 +12,7 @@ VSIX locally:
 
 ```bash
 npm run release:vscode-vsix
-code --install-extension .release/ontos-protocol-vscode-1.0.1.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.2.vsix
 ```
 
 See the repository-level
@@ -24,6 +24,8 @@ Features:
 - default tree custom editor for `.ontos` files
 - automatic switch from a text tab to the tree view when `ontos.defaultEditor`
   is `tree`
+- automatic migration of restored `.ontos` text tabs from older Cursor/VS Code
+  sessions into the tree editor
 - Open as Text and Open as Tree commands
 - optional Node Tree side view
 - `.ontos` language registration
@@ -71,11 +73,16 @@ Settings:
 - `ontos.focusSidebarOnOpen`: disabled by default; focuses the Node Tree side view
 - `ontos.indentGuides`: enabled by default for plain text mode
 - `ontos.depthBands`: disabled by default; adds subtle nesting bands in plain text mode
+- `ontos.textFolding`: disabled by default; enables native text-editor folding
+  only for users who explicitly prefer it
 
 The default experience is the tree custom editor. Use Open as Text when editing
 source lines directly. Text mode suppresses VS Code's native folding gutter for
 `.ontos` files so users do not see a second set of left-edge disclosure
-controls competing with the tree editor.
+controls competing with the tree editor. If Cursor restores a `.ontos` text tab
+from an older session, the extension migrates it back into `.ontos Tree` unless
+`ontos.defaultEditor` is set to `text` or the current session used `.ontos: Open
+as Text`.
 
 Local development smoke check:
 

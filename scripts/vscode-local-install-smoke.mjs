@@ -23,7 +23,7 @@ try {
 
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
   assert.equal(manifest.main, "./dist/extension.js");
-  assert.equal(manifest.version, "1.0.1");
+  assert.equal(manifest.version, "1.0.2");
   assert.equal(manifest.contributes.customEditors[0].viewType, "ontos.nativeViewer");
   assert.equal(manifest.configurationDefaults["workbench.editorAssociations"]["*.ontos"], "ontos.nativeViewer");
   assert.equal(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never");
@@ -63,6 +63,10 @@ try {
   assert.match(installedBundle, /openCustomDocument/u);
   assert.match(installedBundle, /registerCustomEditorProvider/u);
   assert.match(installedBundle, /suppressTreePromotion/u);
+  assert.match(installedBundle, /migrateOpenOntosTextTabs/u);
+  assert.match(installedBundle, /TREE_TEXT_TAB_MIGRATION_VERSION/u);
+  assert.match(installedBundle, /field-toggle/u);
+  assert.match(installedBundle, /Search nodes and fields/u);
   assert.match(installedBundle, /isOntosDocument/u);
   assert.match(installedBundle, /ontos\.openAsText/u);
   assert.match(installedBundle, /ontos\.reviewPack/u);

@@ -14,8 +14,9 @@ assertEqual(manifest.contributes.customEditors[0].priority, "default", "custom e
 assertEqual(manifest.configurationDefaults["workbench.editorAssociations"]["*.ontos"], "ontos.nativeViewer", "editor association");
 assertEqual(manifest.contributes.configuration.properties["ontos.indentGuides"].default, true, "indent guides default");
 assertEqual(manifest.contributes.configuration.properties["ontos.depthBands"].default, false, "depth bands default");
+assertEqual(manifest.contributes.configuration.properties["ontos.textFolding"].default, false, "text folding default");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.guides.indentation"], true, "ontos indentation guides");
-assertEqual(manifest.version, "1.0.1", "version");
+assertEqual(manifest.version, "1.0.2", "version");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.showFoldingControls"], "never", "ontos folding controls");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.folding"], false, "ontos text folding");
 assertEqual(manifest.configurationDefaults["[ontos]"]["editor.foldingHighlight"], false, "ontos folding highlight");
@@ -32,7 +33,9 @@ for (const path of [
   "src/extension.js",
   "src/nativeEditor.js",
   "src/openMode.js",
+  "src/openModeLogic.js",
   "src/treeProvider.js",
+  "src/webviewTree.js",
   "src/webviewPreview.js",
   manifest.contributes.languages[0].configuration,
   manifest.contributes.grammars[0].path,
@@ -89,6 +92,7 @@ for (const required of [
   "createDiagnosticCollection",
   "registerCustomEditorProvider",
   "openAsTextEditor",
+  "migrateOpenOntosTextTabs",
   "promoteToTreeViewer",
   "isOntosDocument",
   "registerIndentDecorations",
@@ -98,7 +102,8 @@ for (const required of [
   "onDidChangeSelection",
   "nativeEditor.focusNode",
   "nodeInfoAtLine",
-  "createTransientNodePack"
+  "createTransientNodePack",
+  "textFolding"
 ]) {
   if (!source.includes(required)) {
     throw new Error(`VS Code extension source is missing ${required}`);
@@ -109,16 +114,12 @@ const nativeEditor = readFileSync(join(root, "src/nativeEditor.js"), "utf8");
 for (const required of [
   "resolveCustomTextEditor",
   "openCustomDocument",
-  "createViewerModel",
+  "treeWebviewHtml",
   "enableScripts: true",
   "suppressTreePromotion",
   "onFocusNode",
-  "type: \"focus\"",
-  "focusNode",
-  "data-focused",
-  "grid-template-columns: var(--indent) 16px minmax(0, 1fr) auto",
-  "row.style.setProperty(\"--indent\"",
-  "role=\"tree\""
+  "message?.type === \"focus\"",
+  "focusNode"
 ]) {
   if (!nativeEditor.includes(required)) {
     throw new Error(`VS Code custom editor source is missing ${required}`);
@@ -130,16 +131,42 @@ for (const required of [
   "vscode.openWith",
   "ontos.nativeViewer",
   "closeTextTabsForUri",
-  "suppressTreePromotion"
+  "suppressTreePromotion",
+  "migrateOpenOntosTextTabs",
+  "TREE_TEXT_TAB_MIGRATION_VERSION",
+  "shouldPromoteOntosTextTab"
 ]) {
   if (!openMode.includes(required)) {
     throw new Error(`VS Code open mode source is missing ${required}`);
   }
 }
 
+const webviewTree = readFileSync(join(root, "src/webviewTree.js"), "utf8");
+for (const required of [
+  "createViewerModel",
+  "grid-template-columns: calc(var(--depth) * 18px) 20px minmax(0, 1fr) auto",
+  "field-toggle",
+  "Search nodes and fields",
+  "setNodeOpen",
+  "data-search-hit",
+  "role=\"tree\""
+]) {
+  if (!webviewTree.includes(required)) {
+    throw new Error(`VS Code webview tree source is missing ${required}`);
+  }
+}
+for (const forbidden of ["<details", "<summary"]) {
+  if (webviewTree.includes(forbidden)) {
+    throw new Error(`VS Code webview tree should not include native ${forbidden} controls.`);
+  }
+}
+
 const preview = readFileSync(join(root, "src/webviewPreview.js"), "utf8");
 if (!preview.includes("createWebviewPanel") || !preview.includes("enableScripts: true")) {
   throw new Error("VS Code preview must be an interactive webview.");
+}
+if (!preview.includes("treeWebviewHtml")) {
+  throw new Error("VS Code preview must use the shared webview tree renderer.");
 }
 
 const languageConfig = JSON.parse(readFileSync(join(root, "language-configuration.json"), "utf8"));

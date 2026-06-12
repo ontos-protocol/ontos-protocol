@@ -25,10 +25,10 @@ npm run build
 npm run release:vscode-vsix
 ```
 
-Expected output for version `1.0.1`:
+Expected output for version `1.0.2`:
 
 ```text
-.release/ontos-protocol-vscode-1.0.1.vsix
+.release/ontos-protocol-vscode-1.0.2.vsix
 ```
 
 `npm run release:archives` also includes the VSIX in `.release/SHA256SUMS`.
@@ -36,7 +36,7 @@ Expected output for version `1.0.1`:
 Verify the VSIX exists and is checksummed:
 
 ```bash
-test -f .release/ontos-protocol-vscode-1.0.1.vsix
+test -f .release/ontos-protocol-vscode-1.0.2.vsix
 npm run validate:release-archives
 ```
 
@@ -45,7 +45,7 @@ npm run validate:release-archives
 For VS Code:
 
 ```bash
-code --install-extension .release/ontos-protocol-vscode-1.0.1.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.2.vsix
 ```
 
 For Cursor, use the Extensions view command menu and install the same VSIX from
@@ -54,6 +54,8 @@ disk if Open VSX publishing has not completed yet.
 Expected behavior after install:
 
 - opening `examples/project-state.ontos` shows `.ontos Tree` by default
+- restored `.ontos` text tabs from older Cursor or VS Code sessions migrate
+  back into `.ontos Tree` unless the user explicitly selected text mode
 - `.ontos: Open as Text` opens source text without immediate tree promotion
 - `.ontos: Open as Tree` returns to the custom editor
 - `.ontos: Copy Context Pack` works from the tree tab focus, Node Tree
@@ -74,7 +76,7 @@ Preconditions:
 Publish:
 
 ```bash
-npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.1.vsix --skip-duplicate
+npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.2.vsix --skip-duplicate
 ```
 
 Expected public URL after publication:
@@ -111,7 +113,7 @@ Preconditions:
 Publish:
 
 ```bash
-npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.1.vsix
+npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.2.vsix
 ```
 
 Expected public URL after publication:

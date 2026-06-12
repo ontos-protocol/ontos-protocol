@@ -54,7 +54,7 @@
     "validate:ast-consumers": "node scripts/validate-ast-consumers.mjs",
     "validate:conformance": "node packages/parser/test/conformance.test.js && node packages/cli/test/cli.test.js && node packages/viewer/test/viewer.test.js",
     "validate:examples": "node scripts/validate-examples.mjs",
-    "validate:vscode": "node scripts/validate-vscode-extension.mjs && node scripts/test-vscode-extension-logic.mjs",
+    "validate:vscode": "node scripts/validate-vscode-extension.mjs && node scripts/test-vscode-extension-logic.mjs && node scripts/test-vscode-open-mode.mjs && node scripts/test-vscode-webview-ui.mjs",
     "validate:obsidian": "node scripts/validate-obsidian-plugin.mjs",
     "validate:extensions-package": "node scripts/validate-extension-packages.mjs",
     "validate:runtime-compat": "node scripts/validate-runtime-compat.mjs",

@@ -22,6 +22,7 @@ import {
 } from "./extensionLogic.js";
 import {
   openAsTextEditor,
+  migrateOpenOntosTextTabs,
   promoteToTreeViewer,
   schedulePromoteToTreeViewer,
   suppressTreePromotion
@@ -113,9 +114,13 @@ export function activate(context) {
   for (const document of vscode.workspace.textDocuments) {
     handleOntosDocument(document);
   }
+  void migrateOpenOntosTextTabs(context);
 
   context.subscriptions.push(
-    vscode.workspace.onDidOpenTextDocument(handleOntosDocument),
+    vscode.workspace.onDidOpenTextDocument((document) => {
+      handleOntosDocument(document);
+      void migrateOpenOntosTextTabs(context);
+    }),
     treeView.onDidChangeSelection((event) => {
       selectedTreeNode = event.selection[0];
       if (selectedTreeNode) {
@@ -133,8 +138,12 @@ export function activate(context) {
       }
       refreshUi(editor?.document);
       indentDecorations.refresh(editor?.document);
+      void migrateOpenOntosTextTabs(context);
     }),
-    vscode.window.tabGroups.onDidChangeTabs(() => refreshUi()),
+    vscode.window.tabGroups.onDidChangeTabs(() => {
+      refreshUi();
+      void migrateOpenOntosTextTabs(context);
+    }),
     vscode.workspace.onDidChangeTextDocument((event) => {
       validateDocument(event.document);
       refreshUi(event.document);
@@ -147,6 +156,7 @@ export function activate(context) {
       }
       if (isOntosDocument(document)) {
         schedulePromoteToTreeViewer(document.uri);
+        void migrateOpenOntosTextTabs(context);
       }
       refreshUi(document);
       indentDecorations.refresh(document);
@@ -177,6 +187,10 @@ export function activate(context) {
     }),
     vscode.languages.registerFoldingRangeProvider(selector, {
       provideFoldingRanges(document) {
+        const enabled = vscode.workspace.getConfiguration("ontos").get("textFolding", false);
+        if (!enabled) {
+          return [];
+        }
         return foldingRanges(document);
       }
     }),

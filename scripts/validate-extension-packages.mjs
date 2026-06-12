@@ -58,7 +58,7 @@ function validateVsCodePackage() {
   }
 
   const manifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
-  if (manifest.version !== "1.0.1" || manifest.publisher !== "ontos-protocol") {
+  if (manifest.version !== "1.0.2" || manifest.publisher !== "ontos-protocol") {
     throw new Error("VS Code package metadata is not ready for release.");
   }
   if (manifest.main !== "./dist/extension.js") {
@@ -89,6 +89,10 @@ function validateVsCodePackage() {
     "ontos.convertMarkdown",
     "createTransientNodePack",
     "suppressTreePromotion",
+    "migrateOpenOntosTextTabs",
+    "TREE_TEXT_TAB_MIGRATION_VERSION",
+    "field-toggle",
+    "Search nodes and fields",
     "isOntosDocument"
   ]) {
     if (!bundle.includes(required)) {

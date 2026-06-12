@@ -5,7 +5,22 @@ All notable changes to `.ontos Protocol` are documented here.
 The project follows semantic versioning for packages and the compatibility
 policy documented in `docs/COMPATIBILITY_POLICY.md`.
 
-## 1.0.2 - Unreleased
+## 1.0.2 - 2026-06-12
+
+### Fixed
+
+- Added a Cursor/VS Code first-open migration so restored `.ontos` text tabs
+  move back into the `.ontos Tree` custom editor when the user has not
+  explicitly chosen text mode.
+- Reworked the `.ontos Tree` custom editor for clearer first-open scanning,
+  including custom disclosure controls, node metadata, search, and collapsed
+  long-field blocks.
+- Fixed tree expansion state so toolbar Expand/Collapse, chevrons, and
+  `aria-expanded` stay synchronized.
+- Replaced the optional side preview's native `<details>` disclosure UI with
+  the same custom tree renderer used by the main editor.
+- Disabled native text-editor folding ranges by default behind
+  `ontos.textFolding` to avoid a competing left-edge folding surface.
 
 ### Changed
 

@@ -2,7 +2,7 @@
   "name": "ontos-protocol-vscode",
   "displayName": ".ontos Protocol",
   "description": "VS Code language support for .ontos Protocol files.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "ontos-protocol",
   "license": "MIT",
   "repository": {
@@ -246,6 +246,11 @@
           "type": "boolean",
           "default": false,
           "description": "Tint nested .ontos text lines with subtle depth bands."
+        },
+        "ontos.textFolding": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable native text-editor folding ranges for .ontos files. Disabled by default so the tree editor is the primary folding surface."
         }
       }
     }

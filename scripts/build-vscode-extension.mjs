@@ -31,7 +31,10 @@ for (const required of [
   "createDiagnosticCollection",
   "registerDocumentFormattingEditProvider",
   "registerCustomEditorProvider",
-  "resolveCustomTextEditor"
+  "resolveCustomTextEditor",
+  "migrateOpenOntosTextTabs",
+  "field-toggle",
+  "Search nodes and fields"
 ]) {
   if (!bundle.includes(required)) {
     throw new Error(`VS Code extension bundle is missing ${required}.`);
