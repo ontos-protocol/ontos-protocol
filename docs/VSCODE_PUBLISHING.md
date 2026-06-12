@@ -25,10 +25,10 @@ npm run build
 npm run release:vscode-vsix
 ```
 
-Expected output for version `1.0.4`:
+Expected output for version `1.0.5`:
 
 ```text
-.release/ontos-protocol-vscode-1.0.4.vsix
+.release/ontos-protocol-vscode-1.0.5.vsix
 ```
 
 `npm run release:archives` also includes the VSIX in `.release/SHA256SUMS`.
@@ -36,7 +36,7 @@ Expected output for version `1.0.4`:
 Verify the VSIX exists and is checksummed:
 
 ```bash
-test -f .release/ontos-protocol-vscode-1.0.4.vsix
+test -f .release/ontos-protocol-vscode-1.0.5.vsix
 npm run validate:release-archives
 ```
 
@@ -45,7 +45,7 @@ npm run validate:release-archives
 For VS Code:
 
 ```bash
-code --install-extension .release/ontos-protocol-vscode-1.0.4.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.5.vsix
 ```
 
 For Cursor, use the Extensions view command menu and install the same VSIX from
@@ -55,8 +55,8 @@ Expected behavior after install:
 
 - opening `examples/project-state.ontos` shows `.ontos Tree` by default
 - only one main `.ontos Tree` editor opens by default
-- the companion Node Tree side view opens once for navigation without opening a
-  second copy of the document
+- the companion Node Tree side view opens and focuses once for navigation
+  without opening a second copy of the document
 - optional side preview stays closed unless explicitly requested or the user
   has selected text-mode preview workflow
 - restored `.ontos` text tabs from older Cursor or VS Code sessions migrate
@@ -81,7 +81,7 @@ Preconditions:
 Publish:
 
 ```bash
-npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.4.vsix --skip-duplicate
+npx --yes ovsx@1.0.0 publish .release/ontos-protocol-vscode-1.0.5.vsix --skip-duplicate
 ```
 
 Expected public URL after publication:
@@ -118,7 +118,7 @@ Preconditions:
 Publish:
 
 ```bash
-npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.4.vsix
+npx --yes @vscode/vsce@3.9.2 publish --packagePath .release/ontos-protocol-vscode-1.0.5.vsix
 ```
 
 Expected public URL after publication:

@@ -12,7 +12,7 @@ VSIX locally:
 
 ```bash
 npm run release:vscode-vsix
-code --install-extension .release/ontos-protocol-vscode-1.0.4.vsix
+code --install-extension .release/ontos-protocol-vscode-1.0.5.vsix
 ```
 
 See the repository-level
@@ -27,7 +27,7 @@ Features:
 - automatic migration of restored `.ontos` text tabs from older Cursor/VS Code
   sessions into the tree editor
 - Open as Text and Open as Tree commands
-- optional Node Tree side view
+- default companion Node Tree side view
 - `.ontos` language registration
 - syntax highlighting
 - document symbols and outline
@@ -71,8 +71,8 @@ Settings:
 - `ontos.defaultEditor`: `tree` by default, or `text` for plain text opening
 - `ontos.autoPreview`: disabled by default; only auto-opens the optional side
   preview when `ontos.defaultEditor` is `text`
-- `ontos.focusSidebarOnOpen`: enabled by default; opens the companion Node Tree
-  side view once per `.ontos` document
+- `ontos.focusSidebarOnOpen`: enabled by default; opens and focuses the
+  companion Node Tree side view once per `.ontos` document
 - `ontos.indentGuides`: enabled by default for plain text mode
 - `ontos.depthBands`: disabled by default; adds subtle nesting bands in plain text mode
 - `ontos.textFolding`: disabled by default; enables native text-editor folding

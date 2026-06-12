@@ -1,4 +1,4 @@
-export const TREE_TEXT_TAB_MIGRATION_VERSION = "1.0.4";
+export const TREE_TEXT_TAB_MIGRATION_VERSION = "1.0.5";
 
 export function shouldPromoteOntosTextTab(options = {}) {
   const {

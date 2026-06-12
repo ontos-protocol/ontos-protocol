@@ -23,7 +23,7 @@ try {
 
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
   assert.equal(manifest.main, "./dist/extension.js");
-  assert.equal(manifest.version, "1.0.4");
+  assert.equal(manifest.version, "1.0.5");
   assert.equal(manifest.contributes.customEditors[0].viewType, "ontos.nativeViewer");
   assert.equal(manifest.contributes.configuration.properties["ontos.focusSidebarOnOpen"].default, true);
   assert.equal(manifest.configurationDefaults["workbench.editorAssociations"]["*.ontos"], "ontos.nativeViewer");

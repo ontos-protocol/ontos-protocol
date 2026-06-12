@@ -5,6 +5,14 @@ All notable changes to `.ontos Protocol` are documented here.
 The project follows semantic versioning for packages and the compatibility
 policy documented in `docs/COMPATIBILITY_POLICY.md`.
 
+## 1.0.5 - 2026-06-13
+
+### Fixed
+
+- Actively opens and focuses the companion `Node Tree` side view on first
+  `.ontos` document open, so new Cursor/VS Code users get the intended main
+  `.ontos Tree` plus `Node Tree` layout without running a command manually.
+
 ## 1.0.4 - 2026-06-13
 
 ### Fixed

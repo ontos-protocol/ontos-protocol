@@ -102,7 +102,7 @@ Use one of these paths before asking an AI agent to work from `.ontos` files:
 2. Local VSIX:
 
    ```bash
-   code --install-extension .release/ontos-protocol-vscode-1.0.4.vsix
+   code --install-extension .release/ontos-protocol-vscode-1.0.5.vsix
    ```
 
    In Cursor, install the same VSIX from the Extensions view command menu when

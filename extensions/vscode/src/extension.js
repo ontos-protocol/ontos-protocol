@@ -99,7 +99,7 @@ export function activate(context) {
     const uriKey = activeDocument.uri.toString();
     if (config.get("focusSidebarOnOpen", true) && !sidebarOpenedForUri.has(uriKey)) {
       sidebarOpenedForUri.add(uriKey);
-      void vscode.commands.executeCommand("workbench.view.extension.ontos");
+      void openNodeTreeSideView();
     }
     if (
       config.get("autoPreview", false) &&
@@ -294,6 +294,15 @@ export function activate(context) {
 }
 
 export function deactivate() {}
+
+async function openNodeTreeSideView() {
+  try {
+    await vscode.commands.executeCommand("workbench.view.extension.ontos");
+    await vscode.commands.executeCommand("ontosNodeTree.focus");
+  } catch {
+    // Older VS Code-compatible hosts may not expose generated view focus commands.
+  }
+}
 
 function registerIndentDecorations(context) {
   const guideTypes = GUIDE_COLORS.map((color) =>

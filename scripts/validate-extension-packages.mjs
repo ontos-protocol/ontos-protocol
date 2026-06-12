@@ -58,7 +58,7 @@ function validateVsCodePackage() {
   }
 
   const manifest = JSON.parse(readFileSync("extensions/vscode/package.json", "utf8"));
-  if (manifest.version !== "1.0.4" || manifest.publisher !== "ontos-protocol") {
+  if (manifest.version !== "1.0.5" || manifest.publisher !== "ontos-protocol") {
     throw new Error("VS Code package metadata is not ready for release.");
   }
   if (manifest.main !== "./dist/extension.js") {
@@ -99,6 +99,8 @@ function validateVsCodePackage() {
     "glass.openFileInStableTab",
     "path: uri.fsPath",
     "sidebarOpenedForUri",
+    "openNodeTreeSideView",
+    "ontosNodeTree.focus",
     "hasTreeViewerTab",
     "defaultEditor",
     "field-toggle",
